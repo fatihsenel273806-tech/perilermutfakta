@@ -51,9 +51,21 @@ sırasıyla eşleşir. Yeni ürün eklerken mevcut bir ürünü kopyalayıp `id`
 fotoğrafı `assets/img/` klasörüne `urun-adi-640.webp` ve `urun-adi-1280.webp`
 olarak koyun (veya `image: 'dosya.svg'`).
 
-> Supangle, Kayseri mantısı, mercimek köftesi, su böreği, fırın sütlaç ve ev baklavası için gerçek
-> fotoğraf gelene kadar illüstrasyon (`assets/img/*.svg`) kullanılıyor. Fotoğrafı `urun-adi-640.webp` /
-> `urun-adi-1280.webp` olarak ekleyip üründeki `image` alanından `.svg` uzantısını ve `illustrated: true` satırını kaldırmanız yeterli.
+### Görsel kaynakları
+
+Aşağıdaki ürün fotoğrafları Wikimedia Commons'tan, belirtilen özgür lisanslarla alınmıştır.
+Lisans gereği yazar adı ve lisans, ürün penceresinde fotoğrafın köşesinde gösterilir
+(`photoCredit` alanı). Kendi fotoğraflarınızı eklediğinizde aynı dosya adıyla değiştirip
+`photoCredit` satırını silmeniz yeterlidir.
+
+| Ürün | Yazar | Lisans | Kaynak |
+|---|---|---|---|
+| kayseri-mantisi | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kayseri_mant%C4%B1s%C4%B1.jpg) |
+| mercimek-koftesi | İmmortalance | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lentil_meatballs.jpg) |
+| su-boregi | Samizambak | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Su_b%C3%B6re%C4%9Fi_2025.jpg) |
+| firin-sutlac | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Turkish_rice_pudding_(s%C3%BCtla%C3%A7).jpg) |
+| ev-baklavasi | Maksym Kozlenko | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2018-04-28_Turkish_baklava_in_Australian_turkish_cafe.jpg) |
+| supangle | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Supangle_(cake_inside).jpg) |
 
 ## 3) Yayınlama (GitHub Pages – ücretsiz)
 
@@ -131,7 +143,7 @@ assets/js/app.js        Sepet, sipariş özeti ve WhatsApp mesajı
 assets/css/styles.css   Derlenmiş Tailwind CSS
 src/styles.css          Tailwind kaynak dosyası
 tailwind.config.js      Renk sistemi
-assets/img/             Ürün görselleri (WebP), og-image.jpg, supangle.svg
+assets/img/             Ürün görselleri (WebP), og-image.jpg
 ```
 
 İkonlar: [Lucide](https://lucide.dev) (ISC lisansı).

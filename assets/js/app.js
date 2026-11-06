@@ -611,6 +611,11 @@
           <span class="absolute left-3 top-3 flex flex-wrap gap-1.5 sm:left-4 sm:top-4">${imageBadges(p)}</span>
           ${p.illustrated ? '<span class="badge-cream absolute bottom-4 left-4 normal-case tracking-normal">Görsel temsilidir</span>' : ''}
           ${
+            p.photoCredit
+              ? `<a href="${esc(p.photoCredit.url)}" target="_blank" rel="noopener" class="absolute bottom-2 right-2 rounded-full bg-cocoa/55 px-2 py-0.5 text-[10px] font-semibold text-white/90 backdrop-blur-sm hover:bg-cocoa/75">Foto: ${esc(p.photoCredit.author)} · ${esc(p.photoCredit.license)}</a>`
+              : ''
+          }
+          ${
             gallery
               ? `<div class="absolute bottom-4 left-4 flex gap-2">${gallery
                   .map(

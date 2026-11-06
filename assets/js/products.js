@@ -10,6 +10,8 @@
                 her porsiyon fiyatına eklenir.
    • campaignPrice : kampanya aktifken uygulanan fiyat (siparişte 1 adet)
    • image    : assets/img klasöründeki görselin adı (-640/-1280.webp)
+   • photoCredit : lisanslı (ör. Wikimedia Commons) fotoğraflar için yazar,
+                lisans ve kaynak bağlantısı – ürün penceresinde gösterilir
    ===================================================================== */
 window.MENU = {
   categories: [
@@ -108,8 +110,8 @@ window.MENU = {
       name: 'Kayseri Mantısı',
       aliases: ['manti', 'mantı', 'kayseri', 'yoğurtlu', 'ev mantısı'],
       category: 'ev-yemekleri',
-      image: 'kayseri-mantisi.svg',
-      illustrated: true,
+      image: 'kayseri-mantisi',
+      photoCredit: { author: 'E4024', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Kayseri_mant%C4%B1s%C4%B1.jpg' },
       popular: true,
       tags: [],
       short: 'Bir kaşığa 40 tane sığan minik Kayseri mantısı; sarımsaklı yoğurt ve tereyağlı salça sosuyla.',
@@ -135,8 +137,8 @@ window.MENU = {
       name: 'Mercimek Köftesi',
       aliases: ['mercimek', 'kofte', 'köfte', 'vegan', 'gün menüsü'],
       category: 'ev-yemekleri',
-      image: 'mercimek-koftesi.svg',
-      illustrated: true,
+      image: 'mercimek-koftesi',
+      photoCredit: { author: 'İmmortalance', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Lentil_meatballs.jpg' },
       tags: ['vegan'],
       short: 'Kırmızı mercimek ve ince bulgurla yoğrulan, bol yeşillikli mercimek köftesi; marul ve limonla.',
       description:
@@ -295,8 +297,8 @@ window.MENU = {
       name: 'Su Böreği',
       aliases: ['borek', 'börek', 'su boregi', 'peynirli börek', 'kıymalı börek'],
       category: 'hamur-isleri',
-      image: 'su-boregi.svg',
-      illustrated: true,
+      image: 'su-boregi',
+      photoCredit: { author: 'Samizambak', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Su_b%C3%B6re%C4%9Fi_2025.jpg' },
       tags: ['vejetaryen'],
       short: 'Yufkası elde açılıp haşlanan, kat kat tereyağlı su böreği; peynirli veya kıymalı.',
       description:
@@ -379,8 +381,8 @@ window.MENU = {
       name: 'Supangle',
       aliases: ['supangle', 'çikolatalı puding', 'puding', 'kakaolu'],
       category: 'tatlilar',
-      image: 'supangle.svg',
-      illustrated: true,
+      image: 'supangle',
+      photoCredit: { author: 'E4024', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Supangle_(cake_inside).jpg' },
       tags: ['vejetaryen'],
       short: 'Yoğun bitter çikolatalı puding, kakaolu kek tabanı ve hindistan cevizi.',
       description:
@@ -448,8 +450,8 @@ window.MENU = {
       name: 'Fırın Sütlaç',
       aliases: ['sutlac', 'sütlaç', 'sütlü', 'fırın sütlaç', 'pirinç tatlısı'],
       category: 'tatlilar',
-      image: 'firin-sutlac.svg',
-      illustrated: true,
+      image: 'firin-sutlac',
+      photoCredit: { author: 'E4024', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Turkish_rice_pudding_(s%C3%BCtla%C3%A7).jpg' },
       tags: ['vejetaryen', 'glutensiz'],
       short: 'Toprak güveçte, üstü fırında kızarmış klasik sütlaç; tarçın ve fındıkla.',
       description:
@@ -469,8 +471,8 @@ window.MENU = {
       name: 'Ev Baklavası',
       aliases: ['baklava', 'cevizli', 'fıstıklı', 'şerbetli', 'bayram'],
       category: 'tatlilar',
-      image: 'ev-baklavasi.svg',
-      illustrated: true,
+      image: 'ev-baklavasi',
+      photoCredit: { author: 'Maksym Kozlenko', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:2018-04-28_Turkish_baklava_in_Australian_turkish_cafe.jpg' },
       tags: ['vejetaryen'],
       short: 'Elde açılan 40 kat yufka, bol tereyağı ve iç; şerbeti tam kıvamında ev baklavası.',
       description:
