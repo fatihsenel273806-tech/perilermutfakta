@@ -20,6 +20,52 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <link rel="canonical" href="https://fatihsenel273806-tech.github.io/perilermutfakta/" />
+
+  <!-- Google için işletme bilgisi (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "@id": "https://fatihsenel273806-tech.github.io/perilermutfakta/#isletme",
+    "name": "Periler Mutfakta",
+    "description": "Kayseri'de siparişe özel hazırlanan ev yapımı yemek, tatlı ve hamur işleri. Kayseri mantısı, yaprak sarması, kuru dolma, poğaça, San Sebastian ve daha fazlası.",
+    "url": "https://fatihsenel273806-tech.github.io/perilermutfakta/",
+    "image": "https://fatihsenel273806-tech.github.io/perilermutfakta/assets/img/og-image.jpg",
+    "logo": "https://fatihsenel273806-tech.github.io/perilermutfakta/favicon.svg",
+    "telephone": "+90-533-214-48-81",
+    "priceRange": "₺₺",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "Nakit, Havale/EFT, Kredi kartı",
+    "servesCuisine": ["Türk mutfağı", "Ev yemekleri", "Tatlı", "Hamur işi"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kayseri",
+      "addressRegion": "Kayseri",
+      "addressCountry": "TR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Kayseri" },
+      { "@type": "AdministrativeArea", "name": "Melikgazi" },
+      { "@type": "AdministrativeArea", "name": "Kocasinan" },
+      { "@type": "AdministrativeArea", "name": "Talas" }
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    }],
+    "hasMenu": "https://fatihsenel273806-tech.github.io/perilermutfakta/#menu",
+    "acceptsReservations": false,
+    "potentialAction": {
+      "@type": "OrderAction",
+      "target": "https://wa.me/905332144881",
+      "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet", "http://purl.org/goodrelations/v1#DeliveryModePickUp"]
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -312,6 +358,8 @@
     <div class="border-t border-cream/10">
       <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-5 text-xs text-cream-300/60 sm:px-6 lg:px-8">
         <p>© <span id="year">2026</span> Periler Mutfakta. Tüm hakları saklıdır.</p>
+        <p id="food-reg" hidden></p>
+        <a href="kvkk.html" class="underline-offset-2 transition hover:text-honey hover:underline">KVKK Aydınlatma Metni</a>
         <p class="js-price-note"></p>
       </div>
     </div>

@@ -67,7 +67,46 @@ Lisans gereği yazar adı ve lisans, ürün penceresinde fotoğrafın köşesind
 | ev-baklavasi | Maksym Kozlenko | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2018-04-28_Turkish_baklava_in_Australian_turkish_cafe.jpg) |
 | supangle | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Supangle_(cake_inside).jpg) |
 
-## 3) Yayınlama (GitHub Pages – ücretsiz)
+## 3) Ek ayarlar (isteğe bağlı) – `assets/js/config.js`
+
+| Ayar | Ne işe yarar |
+| --- | --- |
+| `bankAccount` | Hesap sahibi, banka ve IBAN. Doldurulursa müşteri *Havale / EFT* seçtiğinde IBAN, **Kopyala** butonuyla gösterilir. |
+| `foodRegistrationNo` | Gıda işletme kayıt numarası; sitenin en altında görünür. |
+| `goatcounterCode` | Ziyaretçi istatistiği (aşağıya bakın). |
+| `priceSheetUrl` | Fiyatları Google E-Tablo'dan güncelleme (aşağıya bakın). |
+
+### Ziyaretçi istatistiği (GoatCounter – ücretsiz, çerezsiz)
+
+1. [goatcounter.com](https://www.goatcounter.com) → **Sign up**; kod olarak ör. `perilermutfakta` seçin.
+2. `goatcounterCode: 'perilermutfakta'` yazın.
+3. Panel: `https://perilermutfakta.goatcounter.com`. Sayfa ziyaretlerinin yanında şu olaylar sayılır:
+   `urun/<ürün>` (ürün açıldı), `sepete-ekle/<ürün>`, `siparis-whatsapp` (WhatsApp ile sipariş gönderildi),
+   `whatsapp-info` / `whatsapp-event` (bilgi / organizasyon butonları), `iban-kopyala`.
+
+Çerez kullanmadığı için çerez onay bandı gerekmez.
+
+### Fiyatları Google E-Tablo'dan güncelleme
+
+1. Depodaki `fiyat-listesi.csv` dosyasını indirin → Google E-Tablolar → **Dosya → İçe aktar → Yükle**.
+2. Sadece **fiyat** ve **goster** sütunlarını değiştirin (`goster` = `hayır` yazılan ürün siteden gizlenir).
+   `urun_id`, `secenek_id`, `cesit_id` sütunlarına dokunmayın.
+3. **Dosya → Paylaş → Web'de yayınla** → sayfayı seçin → biçim **Virgülle ayrılmış değerler (.csv)** → **Yayınla**.
+4. Çıkan bağlantıyı `priceSheetUrl` alanına yapıştırın.
+
+Bundan sonra tabloda yaptığınız değişiklikler birkaç dakika içinde siteye yansır (kod değiştirmeye gerek kalmaz).
+Tablo okunamazsa site `products.js` içindeki fiyatlarla çalışmaya devam eder. Yeni ürün eklediğinizde şablonu
+`node tools/fiyat-sablonu.js > fiyat-listesi.csv` ile yeniden üretebilirsiniz.
+
+### KVKK ve Google
+
+- `kvkk.html` – KVKK aydınlatma metni. Sipariş formunda onay kutusu zorunludur. **Metin genel bir şablondur;
+  bir hukukçuya kontrol ettirmeniz önerilir.**
+- `index.html` içinde Google için işletme bilgisi (Schema.org `FoodEstablishment`), `robots.txt` ve `sitemap.xml` bulunur.
+  Telefon, saat veya alan adı değişirse bu üç yeri de güncelleyin. Siteyi
+  [Google Search Console](https://search.google.com/search-console)'a ekleyip `sitemap.xml` gönderin.
+
+## 4) Yayınlama (GitHub Pages – ücretsiz)
 
 1. GitHub'da depo → **Settings → Pages**
 2. **Source:** *Deploy from a branch*
@@ -144,6 +183,10 @@ assets/css/styles.css   Derlenmiş Tailwind CSS
 src/styles.css          Tailwind kaynak dosyası
 tailwind.config.js      Renk sistemi
 assets/img/             Ürün görselleri (WebP), og-image.jpg
+kvkk.html               KVKK aydınlatma metni
+robots.txt, sitemap.xml Arama motorları için
+fiyat-listesi.csv       Google E-Tablo fiyat şablonu
+tools/fiyat-sablonu.js  Şablonu products.js'ten yeniden üretir
 ```
 
 İkonlar: [Lucide](https://lucide.dev) (ISC lisansı).

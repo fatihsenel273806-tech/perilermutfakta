@@ -91,6 +91,7 @@
     users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
     user: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
     alert: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+    copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
     card: '<rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/>',
     note: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
     pencil: '<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/>',
@@ -165,6 +166,183 @@
     if (!campaignOn(p)) return null;
     const i = p.options.findIndex((o) => o.campaignPrice != null);
     return i >= 0 ? { idx: i, opt: p.options[i] } : null;
+  }
+
+  /* ------------------------------------------------------------ */
+  /* Havale / EFT                                                   */
+  /* ------------------------------------------------------------ */
+  const BANK = CFG.bankAccount || {};
+  const hasIban = () => String(BANK.iban || '').replace(/\s/g, '').length >= 16;
+  const isTransfer = (pm) => /havale|eft|iban/i.test(String(pm || ''));
+
+  function ibanBoxHtml() {
+    if (!hasIban()) {
+      return `<p class="flex items-start gap-2 rounded-2xl bg-honey-50 px-4 py-3 text-xs font-bold ring-1 ring-honey/40">${icon('info', 'h-4 w-4 shrink-0 text-honey-700')}IBAN bilgisi onay mesajımızda paylaşılır. Lütfen ödemeyi siparişiniz onaylandıktan sonra yapın.</p>`;
+    }
+    return `
+      <div class="rounded-2xl bg-honey-50 p-4 text-sm ring-1 ring-honey/40">
+        <p class="text-xs font-extrabold uppercase tracking-wider text-honey-700">Havale / EFT bilgileri</p>
+        ${BANK.holder ? `<p class="mt-2"><span class="text-cocoa-500">Alıcı:</span> <strong>${esc(BANK.holder)}</strong></p>` : ''}
+        ${BANK.bank ? `<p class="mt-0.5"><span class="text-cocoa-500">Banka:</span> <strong>${esc(BANK.bank)}</strong></p>` : ''}
+        <div class="mt-2 flex items-center justify-between gap-2 rounded-xl bg-white px-3 py-2 ring-1 ring-cocoa/10">
+          <code class="break-all text-[13px] font-bold tracking-wide">${esc(BANK.iban)}</code>
+          <button type="button" data-copy-iban class="inline-flex shrink-0 items-center gap-1 rounded-full bg-cocoa px-3 py-1.5 text-xs font-extrabold text-cream">${icon('copy', 'h-3.5 w-3.5')}<span>Kopyala</span></button>
+        </div>
+        <p class="mt-2 text-xs font-semibold text-cocoa-500">Açıklamaya sipariş numaranızı yazın. Lütfen ödemeyi siparişiniz onaylandıktan sonra yapın.</p>
+      </div>`;
+  }
+
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (_) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try {
+        ok = document.execCommand('copy');
+      } catch (_) {
+        ok = false;
+      }
+      ta.remove();
+      return ok;
+    }
+  }
+
+  /* ------------------------------------------------------------ */
+  /* Ziyaretçi istatistiği (GoatCounter – çerezsiz)                 */
+  /* ------------------------------------------------------------ */
+  const GC_CODE = String(CFG.goatcounterCode || '').trim().toLowerCase();
+  function loadAnalytics() {
+    if (!/^[a-z0-9-]+$/.test(GC_CODE)) return;
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://gc.zgo.at/count.js';
+    s.dataset.goatcounter = `https://${GC_CODE}.goatcounter.com/count`;
+    document.head.appendChild(s);
+  }
+  // Olay sayımı: örn. track('siparis-whatsapp', 'WhatsApp ile sipariş gönderildi')
+  function track(path, title) {
+    try {
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path, title: title || path, event: true });
+      }
+    } catch (_) {
+      /* istatistik hatası siteyi etkilememeli */
+    }
+  }
+
+  /* ------------------------------------------------------------ */
+  /* Google E-Tablo'dan fiyat güncelleme                            */
+  /* Sütunlar: urun_id, urun, secenek_id, secenek, cesit_id, cesit, */
+  /*           fiyat, goster  (urun/secenek/cesit yalnızca okunur)  */
+  /* ------------------------------------------------------------ */
+  function parseCsv(text) {
+    const rows = [];
+    let row = [];
+    let cell = '';
+    let q = false;
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (q) {
+        if (ch === '"' && text[i + 1] === '"') {
+          cell += '"';
+          i++;
+        } else if (ch === '"') q = false;
+        else cell += ch;
+      } else if (ch === '"') q = true;
+      else if (ch === ',' || ch === ';') {
+        row.push(cell);
+        cell = '';
+      } else if (ch === '\n' || ch === '\r') {
+        if (ch === '\r' && text[i + 1] === '\n') i++;
+        row.push(cell);
+        rows.push(row);
+        row = [];
+        cell = '';
+      } else cell += ch;
+    }
+    if (cell || row.length) {
+      row.push(cell);
+      rows.push(row);
+    }
+    return rows.filter((r) => r.some((c) => c.trim()));
+  }
+
+  const toPrice = (v) => {
+    const n = Number(String(v || '').replace(/[^\d,.-]/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.'));
+    return Number.isFinite(n) && n > 0 ? Math.round(n) : null;
+  };
+
+  // Geçerli satırları uygular; değişen kayıt sayısını döndürür.
+  function applyPriceSheet(text) {
+    const rows = parseCsv(text);
+    if (rows.length < 2) return 0;
+    const head = rows[0].map((h) => norm(h).trim().replace(/\s+/g, '_'));
+    const col = (name) => head.indexOf(name);
+    const iP = col('urun_id');
+    const iO = col('secenek_id');
+    const iV = col('cesit_id');
+    const iF = col('fiyat');
+    const iS = col('goster');
+    if (iP < 0) return 0;
+    let changed = 0;
+    const hidden = new Set();
+    rows.slice(1).forEach((r) => {
+      const p = byId[(r[iP] || '').trim()];
+      if (!p) return;
+      if (iS >= 0 && /^(hayir|hayır|yok|0|false|gizle)$/i.test((r[iS] || '').trim())) hidden.add(p.id);
+      if (iO < 0 || iF < 0) return;
+      const price = toPrice(r[iF]);
+      const optIdx = p.options.findIndex((o) => o.id === (r[iO] || '').trim());
+      if (price == null || optIdx < 0) return;
+      const vId = iV >= 0 ? (r[iV] || '').trim() : '';
+      const v = vId ? findVariant(p, vId) : null;
+      if (v && Array.isArray(v.prices)) {
+        if (v.prices[optIdx] !== price) changed++;
+        v.prices[optIdx] = price;
+      } else if (!vId) {
+        if (p.options[optIdx].price !== price) changed++;
+        p.options[optIdx].price = price;
+      }
+    });
+    if (hidden.size) {
+      for (let i = PRODUCTS.length - 1; i >= 0; i--) {
+        if (hidden.has(PRODUCTS[i].id)) {
+          PRODUCTS.splice(i, 1);
+          changed++;
+        }
+      }
+    }
+    return changed;
+  }
+
+  async function loadPriceSheet() {
+    const url = String(CFG.priceSheetUrl || '').trim();
+    if (!/^https:\/\//.test(url)) return;
+    try {
+      const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+      const timer = ctrl && setTimeout(() => ctrl.abort(), 8000);
+      const res = await fetch(url, { cache: 'no-store', signal: ctrl && ctrl.signal });
+      if (timer) clearTimeout(timer);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!applyPriceSheet(await res.text())) return;
+      cart = cart.filter((l) => PRODUCTS.some((p) => p.id === l.productId));
+      saveCart();
+      $('#stat-count').textContent = PRODUCTS.length;
+      renderPopular();
+      renderChips();
+      renderMenu();
+      updateCartIndicators();
+      if (isOpen('cart')) renderCart();
+    } catch (err) {
+      console.warn('[Periler Mutfakta] Fiyat tablosu okunamadı, sitedeki fiyatlar kullanılıyor.', err);
+    }
   }
 
   /* ------------------------------------------------------------ */
@@ -951,13 +1129,21 @@
                 .map((pm, i) => `<label class="variant-pill"><input type="radio" name="payment" value="${esc(pm)}" class="sr-only" ${(c.payment ? c.payment === pm : i === 0) ? 'checked' : ''} />${esc(pm)}</label>`)
                 .join('')}
             </div>
+            <div class="mt-3" data-iban-box ${isTransfer(c.payment || pays[0]) ? '' : 'hidden'}>${ibanBoxHtml()}</div>
           </fieldset>
 
           <div>
             <label class="field-label" for="f-note">Sipariş notu <span class="font-semibold text-cocoa-400">(isteğe bağlı)</span></label>
             <textarea id="f-note" name="note" rows="2" maxlength="300" class="field resize-none" placeholder="Zil çalışmıyor, kapıda arayın; hediye paketi olsun…">${esc(c.note)}</textarea>
           </div>
-          <p class="flex items-start gap-2 text-xs font-semibold text-cocoa-400">${icon('info', 'h-4 w-4 shrink-0')}Bilgileriniz yalnızca bu cihazda saklanır ve sadece WhatsApp mesajınıza eklenir.</p>
+          <div>
+            <label class="flex cursor-pointer items-start gap-3 rounded-2xl bg-white p-3 text-xs font-semibold leading-relaxed text-cocoa-600 ring-1 ring-cocoa/10">
+              <input type="checkbox" name="kvkk" value="1" class="mt-0.5 h-5 w-5 shrink-0 accent-pepper" ${c.kvkk === '1' ? 'checked' : ''} />
+              <span><a href="kvkk.html" target="_blank" rel="noopener" class="font-extrabold text-sunset-700 underline underline-offset-2">KVKK Aydınlatma Metni</a>'ni okudum; sipariş bilgilerimin siparişin hazırlanması ve teslimi için WhatsApp üzerinden iletilmesini kabul ediyorum.</span>
+            </label>
+            <p class="mt-1 text-xs font-bold text-pepper" data-err="kvkk" hidden></p>
+          </div>
+          <p class="flex items-start gap-2 text-xs font-semibold text-cocoa-400">${icon('info', 'h-4 w-4 shrink-0')}Bilgileriniz sunucumuza gönderilmez; yalnızca bu cihazda saklanır ve WhatsApp mesajınıza eklenir.</p>
         </form>`;
       footer.innerHTML = `
         ${totalsHtml(t, method)}
@@ -992,6 +1178,7 @@
           </ul>
           <button type="button" data-step="details" class="mt-4 inline-flex items-center gap-1.5 text-xs font-extrabold text-sunset-700 hover:text-sunset-600">${icon('pencil', 'h-3.5 w-3.5')}Bilgileri düzenle</button>
         </div>
+        ${isTransfer(c.payment) ? `<div class="mt-4">${ibanBoxHtml()}</div>` : ''}
 
         <div class="mt-4 rounded-3xl bg-white p-5 shadow-warm-sm ring-1 ring-cocoa/5">
           <p class="text-xs font-extrabold uppercase tracking-wider text-sunset-700">Ürünler</p>
@@ -1036,6 +1223,7 @@
             <p class="flex justify-between"><span class="text-cocoa-500">Sipariş No</span><strong>${esc(orderNo || '-')}</strong></p>
             <p class="mt-1 flex justify-between"><span class="text-cocoa-500">Toplam</span><strong>${money(tt.total)}</strong></p>
           </div>
+          ${isTransfer(c.payment) ? `<div class="mx-auto mt-4 max-w-xs text-left">${ibanBoxHtml()}</div>` : ''}
           <a href="${href}" target="_blank" rel="noopener" class="btn-secondary mt-6">${icon('whatsapp', 'h-5 w-5 text-leaf')}WhatsApp'ı tekrar aç</a>
         </div>`;
       footer.innerHTML = `
@@ -1052,6 +1240,7 @@
     if (!f) return customer;
     const data = Object.fromEntries(new FormData(f).entries());
     Object.keys(data).forEach((k) => (data[k] = String(data[k]).trim()));
+    data.kvkk = data.kvkk === '1' ? '1' : '';
     return { ...customer, ...data };
   }
 
@@ -1067,6 +1256,7 @@
     const minDate = dateInputValue(addDays(new Date(), Number(CFG.leadTimeDays) || 1));
     if (!data.date) errs.date = 'Lütfen teslim tarihi seçin.';
     else if (data.date < minDate) errs.date = `En erken ${longDate(minDate)} için sipariş alabiliyoruz.`;
+    if (data.kvkk !== '1') errs.kvkk = 'Devam etmek için aydınlatma metnini onaylayın.';
     return errs;
   }
 
@@ -1173,7 +1363,7 @@
         'Teslimat yapıyor musunuz?',
         `Evet, adrese teslim ve gel-al seçeneklerimiz var. ${fee ? `Adrese teslimat ücreti ${money(fee)}${CFG.freeDeliveryThreshold ? `; ${money(CFG.freeDeliveryThreshold)} ve üzeri siparişlerde teslimat ücretsizdir` : ''}.` : 'Teslimat ücretsizdir.'} ${esc(CFG.serviceArea || '')}`,
       ],
-      ['Ödemeyi nasıl yapabilirim?', `${(CFG.paymentMethods || []).join(', ')} seçeneklerinden birini sipariş sırasında seçebilirsiniz. Havale/EFT bilgileri onay mesajında paylaşılır.`],
+      ['Ödemeyi nasıl yapabilirim?', `${(CFG.paymentMethods || []).join(', ')} seçeneklerinden birini sipariş sırasında seçebilirsiniz. ${hasIban() ? 'Havale/EFT seçtiğinizde IBAN bilgimiz sipariş ekranında gösterilir' : 'Havale/EFT bilgileri onay mesajında paylaşılır'}; ödemeyi siparişiniz onaylandıktan sonra yapmanızı rica ederiz.`],
       [
         'Siparişim ne zaman kesinleşir?',
         'WhatsApp mesajınız bize ulaştıktan sonra ürünlerin ve teslimat saatinin uygunluğunu kontrol edip onay mesajı gönderiyoruz. Onay mesajıyla siparişiniz kesinleşir.',
@@ -1225,6 +1415,11 @@
     if (CFG.workingHours) contact.push(`<li class="flex items-center gap-2">${icon('clock', 'h-4 w-4 text-honey')}${esc(CFG.workingHours)}</li>`);
     if (CFG.serviceArea) contact.push(`<li class="flex items-start gap-2">${icon('pin', 'mt-0.5 h-4 w-4 shrink-0 text-honey')}<span class="text-cream-300/80">${esc(CFG.serviceArea)}</span></li>`);
     $('#footer-contact').innerHTML = contact.join('');
+    const reg = $('#food-reg');
+    if (reg && CFG.foodRegistrationNo) {
+      reg.textContent = `Gıda İşletme Kayıt No: ${CFG.foodRegistrationNo}`;
+      reg.hidden = false;
+    }
   }
 
   function renderCampaign() {
@@ -1257,14 +1452,24 @@
   /* ------------------------------------------------------------ */
   document.addEventListener('click', (e) => {
     const t = e.target.closest(
-      '[data-open],[data-open-cart],[data-close-cart],[data-close-product],[data-cat],[data-diet],[data-scroll],[data-qty],[data-remove],[data-step],[data-submit-details],[data-wa-send],[data-finish],[data-goto-menu],[data-reset-filters],[data-gallery],[data-pd-qty],#pd-add,[data-cat-link]'
+      '[data-open],[data-open-cart],[data-close-cart],[data-close-product],[data-cat],[data-diet],[data-scroll],[data-qty],[data-remove],[data-step],[data-submit-details],[data-wa-send],[data-finish],[data-goto-menu],[data-reset-filters],[data-gallery],[data-pd-qty],#pd-add,[data-cat-link],[data-copy-iban]'
     );
     if (!t) return;
 
+    if (t.matches('[data-copy-iban]')) {
+      const label = t.querySelector('span');
+      copyText(String(BANK.iban || '').replace(/\s+/g, ' ').trim()).then((ok) => {
+        if (label) label.textContent = ok ? 'Kopyalandı' : 'Kopyalanamadı';
+        setTimeout(() => label && (label.textContent = 'Kopyala'), 2000);
+      });
+      track('iban-kopyala', 'IBAN kopyalandı');
+      return;
+    }
     if (t.matches('[data-open]')) {
       e.preventDefault();
       if (isOpen('cart')) closeRoot('cart');
       openProduct(t.dataset.open);
+      track(`urun/${t.dataset.open}`, `Ürün açıldı: ${(byId[t.dataset.open] || {}).name || t.dataset.open}`);
       return;
     }
     if (t.matches('[data-open-cart]')) {
@@ -1318,6 +1523,7 @@
       addToCart({ productId: p.id, optionId: p.options[sel.optIdx].id, variantId: sel.variantId, qty: sel.qty, note });
       closeRoot('product');
       toast(`${esc(p.name)} sepete eklendi`);
+      track(`sepete-ekle/${p.id}`, `Sepete eklendi: ${p.name}`);
       return;
     }
 
@@ -1351,6 +1557,7 @@
       return;
     }
     if (t.matches('[data-wa-send]')) {
+      track('siparis-whatsapp', `WhatsApp siparişi (${money(computeTotals().total)})`);
       // Bağlantı yeni sekmede açılır; ekranda tamamlandı adımını gösteriyoruz.
       setTimeout(() => {
         cartStep = 'sent';
@@ -1364,6 +1571,12 @@
       closeRoot('cart');
       setTimeout(renderCart, 350);
     }
+  });
+
+  // Genel WhatsApp bağlantıları (bilgi / organizasyon teklifi)
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-wa]');
+    if (a) track(`whatsapp-${a.dataset.wa}`, `WhatsApp bağlantısı: ${a.dataset.wa}`);
   });
 
   document.addEventListener('change', (e) => {
@@ -1380,6 +1593,10 @@
 
   document.addEventListener('change', (e) => {
     const t = e.target;
+    if (t.name === 'payment' && $('#checkout-form')) {
+      const box = $('[data-iban-box]');
+      if (box) box.hidden = !isTransfer(t.value);
+    }
     if (t.name === 'method' && $('#checkout-form')) {
       customer = readForm();
       const wrap = $('[data-delivery-only]');
@@ -1430,6 +1647,8 @@
     renderFooter();
     updateCartIndicators();
     onScroll();
+    loadAnalytics();
+    loadPriceSheet();
     if (!waNumber()) {
       console.info('[Periler Mutfakta] WhatsApp numarası ayarlanmadı. assets/js/config.js içindeki whatsappNumber alanını doldurun.');
     }

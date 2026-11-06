@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fatihsenel273806-tech.github.io/perilermutfakta/sitemap.xml

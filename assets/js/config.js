@@ -45,6 +45,30 @@ window.SITE_CONFIG = {
   // Ödeme seçenekleri
   paymentMethods: ['Nakit (teslimatta)', 'Havale / EFT (IBAN)', 'Kredi kartı (teslimatta)'],
 
+  // Havale / EFT bilgileri – doldurulursa müşteri "Havale / EFT" seçtiğinde
+  // IBAN kopyalama butonuyla birlikte gösterilir. Boş bırakılırsa
+  // "IBAN onay mesajında paylaşılır" yazar.
+  bankAccount: {
+    holder: '', // Hesap sahibi adı soyadı, ör. 'Ayşe Yılmaz'
+    bank: '', // Banka adı, ör. 'Ziraat Bankası'
+    iban: '', // ör. 'TR00 0000 0000 0000 0000 0000 00'
+  },
+
+  // Tarım İl Müdürlüğü'nden alınan gıda işletme kayıt numarası.
+  // Doldurulursa sitenin en altında gösterilir.
+  foodRegistrationNo: '',
+
+  // Ziyaretçi istatistiği (GoatCounter – ücretsiz, çerezsiz).
+  // goatcounter.com'da hesap açarken seçtiğiniz kodu yazın.
+  // Ör. kod 'perilermutfakta' ise panel: https://perilermutfakta.goatcounter.com
+  goatcounterCode: '',
+
+  // Google E-Tablo'dan fiyat güncelleme (isteğe bağlı).
+  // Tabloyu Dosya → Paylaş → Web'de yayınla → "Virgülle ayrılmış değerler (.csv)"
+  // ile yayınlayıp çıkan bağlantıyı buraya yapıştırın. Ayrıntılar README'de.
+  // Boş bırakılırsa products.js içindeki fiyatlar kullanılır.
+  priceSheetUrl: '',
+
   // Kampanya – kapatmak için active: false yapın
   // minOrder: kampanya fiyatının geçmesi için gereken sipariş tutarı (₺, indirim sonrası)
   campaign: {

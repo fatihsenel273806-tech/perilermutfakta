@@ -2,7 +2,7 @@
 // Renk sistemi: iştah açıcı sıcak palet. Varsayılan Tailwind renkleri
 // (mavi, soğuk gri vb.) bilinçli olarak tamamen kaldırıldı.
 module.exports = {
-  content: ['./index.html', './assets/js/**/*.js'],
+  content: ['./*.html', './assets/js/**/*.js'],
   theme: {
     colors: {
       transparent: 'transparent',

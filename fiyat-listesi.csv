@@ -1,0 +1,105 @@
+urun_id,urun,secenek_id,secenek,cesit_id,cesit,fiyat,goster
+yaprak-sarmasi,Yaprak Sarması,p3,3 Kişilik,zeytinyagli,Zeytinyağlı,540,evet
+yaprak-sarmasi,Yaprak Sarması,p3,3 Kişilik,etli,Etli (dana kıymalı),660,evet
+yaprak-sarmasi,Yaprak Sarması,p5,5 Kişilik,zeytinyagli,Zeytinyağlı,850,evet
+yaprak-sarmasi,Yaprak Sarması,p5,5 Kişilik,etli,Etli (dana kıymalı),1050,evet
+yaprak-sarmasi,Yaprak Sarması,p10,10 Kişilik,zeytinyagli,Zeytinyağlı,1650,evet
+yaprak-sarmasi,Yaprak Sarması,p10,10 Kişilik,etli,Etli (dana kıymalı),2050,evet
+kuru-dolma,Kuru Dolma,p3,3 Kişilik,zeytinyagli,Zeytinyağlı,780,evet
+kuru-dolma,Kuru Dolma,p3,3 Kişilik,etli,Etli (dana kıymalı),960,evet
+kuru-dolma,Kuru Dolma,p5,5 Kişilik,zeytinyagli,Zeytinyağlı,1250,evet
+kuru-dolma,Kuru Dolma,p5,5 Kişilik,etli,Etli (dana kıymalı),1550,evet
+kuru-dolma,Kuru Dolma,p10,10 Kişilik,zeytinyagli,Zeytinyağlı,2400,evet
+kuru-dolma,Kuru Dolma,p10,10 Kişilik,etli,Etli (dana kıymalı),2990,evet
+icli-kofte,İçli Köfte,a6,6 Adet,,,450,evet
+icli-kofte,İçli Köfte,a12,12 Adet,,,870,evet
+icli-kofte,İçli Köfte,a25,25 Adet,,,1750,evet
+kayseri-mantisi,Kayseri Mantısı,p3,3 Kişilik,kuru,Kuru – pişirmeye hazır (yoğurt & sos ayrı),450,evet
+kayseri-mantisi,Kayseri Mantısı,p3,3 Kişilik,pismis,"Pişmiş, yoğurtlu & soslu (servise hazır)",540,evet
+kayseri-mantisi,Kayseri Mantısı,p6,6 Kişilik,kuru,Kuru – pişirmeye hazır (yoğurt & sos ayrı),850,evet
+kayseri-mantisi,Kayseri Mantısı,p6,6 Kişilik,pismis,"Pişmiş, yoğurtlu & soslu (servise hazır)",1000,evet
+kayseri-mantisi,Kayseri Mantısı,p12,12 Kişilik,kuru,Kuru – pişirmeye hazır (yoğurt & sos ayrı),1650,evet
+kayseri-mantisi,Kayseri Mantısı,p12,12 Kişilik,pismis,"Pişmiş, yoğurtlu & soslu (servise hazır)",1950,evet
+mercimek-koftesi,Mercimek Köftesi,a30,30 Adet,,,420,evet
+mercimek-koftesi,Mercimek Köftesi,a60,60 Adet,,,800,evet
+mercimek-koftesi,Mercimek Köftesi,a100,100 Adet,,,1300,evet
+pogaca,Poğaça Çeşitleri,a10,10 Adet,,,320,evet
+pogaca,Poğaça Çeşitleri,a20,20 Adet,,,620,evet
+pogaca,Poğaça Çeşitleri,a40,40 Adet,,,1200,evet
+hashasli-corek,Haşhaşlı Çörek,a6,6 Adet,,,330,evet
+hashasli-corek,Haşhaşlı Çörek,a12,12 Adet,,,640,evet
+hashasli-corek,Haşhaşlı Çörek,a24,24 Adet,,,1240,evet
+kruvasan,Tereyağlı Kruvasan,a6,6 Adet,sade,Sade,360,evet
+kruvasan,Tereyağlı Kruvasan,a6,6 Adet,kasarli,Kaşarlı,400,evet
+kruvasan,Tereyağlı Kruvasan,a6,6 Adet,cikolatali,Çikolatalı,400,evet
+kruvasan,Tereyağlı Kruvasan,a12,12 Adet,sade,Sade,700,evet
+kruvasan,Tereyağlı Kruvasan,a12,12 Adet,kasarli,Kaşarlı,780,evet
+kruvasan,Tereyağlı Kruvasan,a12,12 Adet,cikolatali,Çikolatalı,780,evet
+kruvasan,Tereyağlı Kruvasan,a24,24 Adet,sade,Sade,1350,evet
+kruvasan,Tereyağlı Kruvasan,a24,24 Adet,kasarli,Kaşarlı,1500,evet
+kruvasan,Tereyağlı Kruvasan,a24,24 Adet,cikolatali,Çikolatalı,1500,evet
+peynirli-pide,Peynirli Mini Pide,a4,4 Adet,,,640,evet
+peynirli-pide,Peynirli Mini Pide,a8,8 Adet,,,1240,evet
+peynirli-pide,Peynirli Mini Pide,a12,12 Adet,,,1800,evet
+kavurmali-pide,Kavurmalı Yumurtalı Pide,a2,2 Adet,,,540,evet
+kavurmali-pide,Kavurmalı Yumurtalı Pide,a4,4 Adet,,,1060,evet
+kavurmali-pide,Kavurmalı Yumurtalı Pide,a8,8 Adet,,,2080,evet
+milfoy-kulah,Milföy Külah,a10,10 Adet,,,480,evet
+milfoy-kulah,Milföy Külah,a20,20 Adet,,,920,evet
+milfoy-kulah,Milföy Külah,a40,40 Adet,,,1780,evet
+su-boregi,Su Böreği,yt,Yarım Tepsi,peynirli,Peynirli & maydanozlu,750,evet
+su-boregi,Su Böreği,yt,Yarım Tepsi,kiymali,Kıymalı (vejetaryen değildir),900,evet
+su-boregi,Su Böreği,tt,Tam Tepsi,peynirli,Peynirli & maydanozlu,1400,evet
+su-boregi,Su Böreği,tt,Tam Tepsi,kiymali,Kıymalı (vejetaryen değildir),1700,evet
+trilice,Triliçe,p4,4 Kişilik,,,600,evet
+trilice,Triliçe,p8,8 Kişilik,,,1150,evet
+trilice,Triliçe,p12,12 Kişilik,,,1650,evet
+magnolya,Magnolya,k1,1 Kap,cilek,Çilekli,190,evet
+magnolya,Magnolya,k1,1 Kap,muz,Muzlu,190,evet
+magnolya,Magnolya,k1,1 Kap,karisik,Çilek & muz,190,evet
+magnolya,Magnolya,k1,1 Kap,lotus,Lotus bisküvili,220,evet
+magnolya,Magnolya,k4,4'lü Kutu,cilek,Çilekli,720,evet
+magnolya,Magnolya,k4,4'lü Kutu,muz,Muzlu,720,evet
+magnolya,Magnolya,k4,4'lü Kutu,karisik,Çilek & muz,720,evet
+magnolya,Magnolya,k4,4'lü Kutu,lotus,Lotus bisküvili,840,evet
+magnolya,Magnolya,k8,8'li Kutu,cilek,Çilekli,1400,evet
+magnolya,Magnolya,k8,8'li Kutu,muz,Muzlu,1400,evet
+magnolya,Magnolya,k8,8'li Kutu,karisik,Çilek & muz,1400,evet
+magnolya,Magnolya,k8,8'li Kutu,lotus,Lotus bisküvili,1640,evet
+magnolya,Magnolya,kase,Aile Kasesi,cilek,Çilekli,1450,evet
+magnolya,Magnolya,kase,Aile Kasesi,muz,Muzlu,1450,evet
+magnolya,Magnolya,kase,Aile Kasesi,karisik,Çilek & muz,1450,evet
+magnolya,Magnolya,kase,Aile Kasesi,lotus,Lotus bisküvili,1700,evet
+supangle,Supangle,k1,1 Kap,,,160,evet
+supangle,Supangle,k4,4'lü Kutu,,,600,evet
+supangle,Supangle,k8,8'li Kutu,,,1160,evet
+spoonful,Spoonful,k1,1 Kap,,,180,evet
+spoonful,Spoonful,k4,4'lü Kutu,,,680,evet
+spoonful,Spoonful,k8,8'li Kutu,,,1320,evet
+berliner,Kremalı Berliner,a6,6 Adet,,,450,evet
+berliner,Kremalı Berliner,a12,12 Adet,,,870,evet
+berliner,Kremalı Berliner,a24,24 Adet,,,1700,evet
+firin-sutlac,Fırın Sütlaç,k1,1 Güveç,,,150,evet
+firin-sutlac,Fırın Sütlaç,k4,4'lü Kutu,,,560,evet
+firin-sutlac,Fırın Sütlaç,k8,8'li Kutu,,,1080,evet
+ev-baklavasi,Ev Baklavası,g500,500 g,cevizli,Cevizli,650,evet
+ev-baklavasi,Ev Baklavası,g500,500 g,fistikli,Antep fıstıklı,950,evet
+ev-baklavasi,Ev Baklavası,kg1,1 kg,cevizli,Cevizli,1250,evet
+ev-baklavasi,Ev Baklavası,kg1,1 kg,fistikli,Antep fıstıklı,1850,evet
+ev-baklavasi,Ev Baklavası,kg2,2 kg (tepsi),cevizli,Cevizli,2400,evet
+ev-baklavasi,Ev Baklavası,kg2,2 kg (tepsi),fistikli,Antep fıstıklı,3600,evet
+san-sebastian,San Sebastian Cheesecake,c16,16 cm,,,950,evet
+san-sebastian,San Sebastian Cheesecake,c20,20 cm,,,1450,evet
+san-sebastian,San Sebastian Cheesecake,c24,24 cm,,,2050,evet
+limonlu-cheesecake,Limonlu Cheesecake,c16,16 cm,,,900,evet
+limonlu-cheesecake,Limonlu Cheesecake,c20,20 cm,,,1350,evet
+limonlu-cheesecake,Limonlu Cheesecake,c24,24 cm,,,1900,evet
+tuzlu-kurabiye,Tuzlu Kurabiye,g500,500 g,,,380,evet
+tuzlu-kurabiye,Tuzlu Kurabiye,kg1,1 kg,,,720,evet
+tuzlu-kurabiye,Tuzlu Kurabiye,kg2,2 kg,,,1400,evet
+elmali-kurabiye,Elmalı Kurabiye,g500,500 g,,,420,evet
+elmali-kurabiye,Elmalı Kurabiye,kg1,1 kg,,,800,evet
+elmali-kurabiye,Elmalı Kurabiye,kg2,2 kg,,,1550,evet
+kokteyl-standi,Kokteyl Sandviç Standı,pr30,30 Parça,,,2100,evet
+kokteyl-standi,Kokteyl Sandviç Standı,pr50,50 Parça,,,3400,evet
+kokteyl-standi,Kokteyl Sandviç Standı,pr80,80 Parça,,,5300,evet
