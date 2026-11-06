@@ -195,24 +195,35 @@
     };
   }
 
+  const campaignMin = () => Number(CFG.campaign && CFG.campaign.minOrder) || 0;
+
   function computeTotals(method = customer.method || 'delivery') {
     let subtotal = 0;
-    let discount = 0;
-    let campaignUsed = false;
+    let campRow = null;
     const rows = cart
       .map(resolveLine)
       .filter(Boolean)
       .map((r) => {
-        const lineTotal = r.unit * r.line.qty;
-        let lineDiscount = 0;
-        if (r.camp != null && !campaignUsed && r.camp < r.unit) {
-          lineDiscount = r.unit - r.camp; // kampanya siparişte 1 adet için
-          campaignUsed = true;
-        }
-        subtotal += lineTotal;
-        discount += lineDiscount;
-        return { ...r, lineTotal, lineDiscount };
+        const row = { ...r, lineTotal: r.unit * r.line.qty, lineDiscount: 0 };
+        if (!campRow && r.camp != null && r.camp < r.unit) campRow = row;
+        subtotal += row.lineTotal;
+        return row;
       });
+    // Kampanya: siparişte 1 adet için, indirim sonrası tutar campaign.minOrder ve üzeriyse
+    let discount = 0;
+    let campaignUsed = false;
+    let campaignRemain = 0;
+    if (campRow) {
+      const d = campRow.unit - campRow.camp;
+      const remain = campaignMin() - (subtotal - d);
+      if (remain <= 0) {
+        campRow.lineDiscount = d;
+        discount = d;
+        campaignUsed = true;
+      } else {
+        campaignRemain = remain;
+      }
+    }
     const net = subtotal - discount;
     const count = rows.reduce((a, r) => a + r.line.qty, 0);
     const threshold = Number(CFG.freeDeliveryThreshold) || 0;
@@ -220,7 +231,7 @@
     if (count && method !== 'pickup') {
       delivery = threshold && net >= threshold ? 0 : Number(CFG.deliveryFee) || 0;
     }
-    return { rows, subtotal, discount, net, delivery, total: net + delivery, count, campaignUsed };
+    return { rows, subtotal, discount, net, delivery, total: net + delivery, count, campaignUsed, campaignRemain };
   }
 
   function saveCart() {
@@ -554,10 +565,6 @@
   /* ------------------------------------------------------------ */
   let sel = null; // { p, optIdx, variantId, qty }
 
-  function cartHasCampaign() {
-    return computeTotals().campaignUsed;
-  }
-
   function priceCellHtml(p, i, variant) {
     const unit = unitPrice(p, i, variant);
     const camp = campaignUnitPrice(p, i, variant);
@@ -573,7 +580,11 @@
     const variant = findVariant(p, sel.variantId);
     const unit = unitPrice(p, optIdx, variant);
     const camp = campaignUnitPrice(p, optIdx, variant);
-    if (camp != null && camp < unit && !cartHasCampaign()) return camp + unit * (qty - 1);
+    if (camp != null && camp < unit) {
+      const t = computeTotals();
+      const hasCampItem = t.rows.some((r) => r.camp != null && r.camp < r.unit);
+      if (!hasCampItem && t.subtotal + unit * qty - (unit - camp) >= campaignMin()) return camp + unit * (qty - 1);
+    }
     return unit * qty;
   }
 
@@ -624,7 +635,7 @@
               campaignOn(p) && CFG.campaign
                 ? `<div class="mt-5 flex items-start gap-3 rounded-2xl bg-honey-50 p-4 ring-1 ring-honey/40">
                     <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-honey text-cocoa">${icon('gift', 'h-5 w-5')}</span>
-                    <p class="text-sm"><strong class="font-extrabold">${esc(CFG.campaign.title)}:</strong> ${esc(CFG.campaign.text)}. Kampanya her siparişte 1 adet için geçerlidir; sos/süsleme farkı ayrıca eklenir.</p>
+                    <p class="text-sm"><strong class="font-extrabold">${esc(CFG.campaign.title)}:</strong> ${esc(CFG.campaign.text)}. Sepet tutarı (indirim sonrası) ${money(campaignMin())} ve üzeri olduğunda 1 adet için otomatik uygulanır; sos/süsleme farkı ayrıca eklenir.</p>
                   </div>`
                 : ''
             }
@@ -850,7 +861,9 @@
         ${
           t.discount
             ? `<p class="mt-4 flex items-center gap-2 rounded-2xl bg-honey-50 px-4 py-3 text-xs font-bold ring-1 ring-honey/40">${icon('gift', 'h-4 w-4 shrink-0 text-honey-700')}Kampanya uygulandı! ${money(t.discount)} kazandınız.</p>`
-            : ''
+            : t.campaignRemain
+              ? `<p class="mt-4 flex items-center gap-2 rounded-2xl bg-honey-50 px-4 py-3 text-xs font-bold ring-1 ring-honey/40">${icon('gift', 'h-4 w-4 shrink-0 text-honey-700')}<span>${money(t.campaignRemain)} daha ekleyin, San Sebastian kampanya fiyatına düşsün!</span></p>`
+              : ''
         }`;
       const min = Number(CFG.minOrderAmount) || 0;
       const belowMin = min && t.net < min;
@@ -1163,7 +1176,7 @@
       [
         'Kampanya koşulları nelerdir?',
         CFG.campaign && CFG.campaign.active
-          ? `${esc(CFG.campaign.title)}: ${esc(CFG.campaign.text)}. Kampanya her siparişte 1 adet için geçerlidir; sos ve süsleme seçimlerinin farkı ayrıca eklenir. Kampanya kontenjanı dolduğunda onay mesajında bilgilendirilirsiniz.`
+          ? `${esc(CFG.campaign.title)}: ${esc(CFG.campaign.text)}. Sepet tutarınız (indirim sonrası) ${money(campaignMin())} ve üzeri olduğunda kampanya 1 adet için otomatik uygulanır; sos ve süsleme seçimlerinin farkı ayrıca eklenir.`
           : 'Güncel kampanyalarımızı bu sayfadan ve WhatsApp üzerinden duyuruyoruz.',
       ],
       [
@@ -1214,16 +1227,9 @@
     const p = c && byId[c.productId];
     const active = Boolean(c && c.active && p && p.campaign);
     $('#campaign-bar').hidden = !active;
-    $('#hero-campaign').hidden = !active;
-    $('#campaign-banner').hidden = !active;
     if (!active) return;
     $$('.js-campaign-title').forEach((el) => (el.textContent = c.title));
     $$('.js-campaign-text').forEach((el) => (el.textContent = c.text));
-    const opt = campaignOption(p);
-    if (opt) {
-      $('#campaign-price').textContent = money(opt.opt.campaignPrice);
-      $('#campaign-old-price').textContent = money(opt.opt.price);
-    }
   }
 
   /* ------------------------------------------------------------ */

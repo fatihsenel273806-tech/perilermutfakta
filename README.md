@@ -6,10 +6,10 @@ bir sipariş sitesi.
 
 ## Özellikler
 
-- **19 ürün, 6 kategori** – fotoğraflar, içindekiler, alerjen ve saklama bilgisi
+- **24 ürün, 6 kategori** (Kayseri merkezli) – fotoğraflar, içindekiler, alerjen ve saklama bilgisi
 - **Porsiyon seçimi** – 3/5/10 kişilik, adet, kilo veya kek çapı (cm); her seçenekte yaklaşık gramaj
 - **Çeşit seçimi** – zeytinyağlı/etli, iç harç, sos, meyve vb. (fiyat farkı otomatik)
-- **Kampanya** – "İlk 5 siparişe San Sebastian 1.000 ₺" (siparişte 1 adet için uygulanır)
+- **Kampanya** – "2.000 ₺ üzeri siparişlerde San Sebastian (20 cm) 1.000 ₺" (indirim sonrası sepet tutarı `campaign.minOrder` ve üzeriyse 1 adet için otomatik uygulanır)
 - **Sepet** – adet artır/azalt, ürün notu, ücretsiz teslimat ilerleme çubuğu, minimum sipariş kontrolü
 - **Sipariş özeti** – ad, telefon, adres, teslim tarihi/saat aralığı, ödeme yöntemi, not
 - **WhatsApp butonu** – sipariş özeti biçimlendirilmiş mesaj olarak yazılı açılır; müşteriye sadece *Gönder* kalır
@@ -51,8 +51,9 @@ sırasıyla eşleşir. Yeni ürün eklerken mevcut bir ürünü kopyalayıp `id`
 fotoğrafı `assets/img/` klasörüne `urun-adi-640.webp` ve `urun-adi-1280.webp`
 olarak koyun (veya `image: 'dosya.svg'`).
 
-> Supangle için gerçek fotoğraf gelene kadar illüstrasyon kullanılıyor
-> (`assets/img/supangle.svg`). Fotoğrafı ekleyip `image: 'supangle'` yapmanız yeterli.
+> Supangle, Kayseri mantısı, mercimek köftesi, su böreği, fırın sütlaç ve ev baklavası için gerçek
+> fotoğraf gelene kadar illüstrasyon (`assets/img/*.svg`) kullanılıyor. Fotoğrafı `urun-adi-640.webp` /
+> `urun-adi-1280.webp` olarak ekleyip üründeki `image` alanından `.svg` uzantısını ve `illustrated: true` satırını kaldırmanız yeterli.
 
 ## 3) Yayınlama (GitHub Pages – ücretsiz)
 

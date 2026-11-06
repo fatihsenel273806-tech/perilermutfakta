@@ -103,6 +103,54 @@ window.MENU = {
       ],
     },
 
+    {
+      id: 'kayseri-mantisi',
+      name: 'Kayseri Mantısı',
+      aliases: ['manti', 'mantı', 'kayseri', 'yoğurtlu', 'ev mantısı'],
+      category: 'ev-yemekleri',
+      image: 'kayseri-mantisi.svg',
+      illustrated: true,
+      popular: true,
+      tags: [],
+      short: 'Bir kaşığa 40 tane sığan minik Kayseri mantısı; sarımsaklı yoğurt ve tereyağlı salça sosuyla.',
+      description:
+        'Hamuru elde açılır, minicik kesilip tek tek kapatılır. Soğanlı dana kıyma iç harcıyla hazırlanan mantı; sarımsaklı yoğurt, tereyağında kızdırılmış salça, pul biber ve kuru naneyle servis edilir. Kuru (pişirmeye hazır) olarak da sipariş edebilirsiniz; yoğurt ve sos ayrı paketlenir.',
+      ingredients: ['Un', 'Yumurta', 'Su', 'Tuz', 'Dana kıyma', 'Kuru soğan', 'Karabiber', 'Süzme yoğurt', 'Sarımsak', 'Tereyağı', 'Domates salçası', 'Pul biber', 'Kuru nane', 'Sumak'],
+      allergens: ['Gluten', 'Yumurta', 'Süt'],
+      serving: '1 porsiyon ≈ 150 g kuru mantı (pişmiş ≈ 300 g, soslu)',
+      storage: 'Kuru mantı: serin yerde 2 hafta · dondurucuda 3 ay · Pişmiş: aynı gün tüketin',
+      variantLabel: 'Hazırlanış',
+      variants: [
+        { id: 'kuru', name: 'Kuru – pişirmeye hazır (yoğurt & sos ayrı)', prices: [450, 850, 1650] },
+        { id: 'pismis', name: 'Pişmiş, yoğurtlu & soslu (servise hazır)', prices: [540, 1000, 1950] },
+      ],
+      options: [
+        { id: 'p3', label: '3 Kişilik', detail: '≈ 500 g kuru mantı' },
+        { id: 'p6', label: '6 Kişilik', detail: '≈ 1 kg kuru mantı' },
+        { id: 'p12', label: '12 Kişilik', detail: '≈ 2 kg kuru mantı' },
+      ],
+    },
+    {
+      id: 'mercimek-koftesi',
+      name: 'Mercimek Köftesi',
+      aliases: ['mercimek', 'kofte', 'köfte', 'vegan', 'gün menüsü'],
+      category: 'ev-yemekleri',
+      image: 'mercimek-koftesi.svg',
+      illustrated: true,
+      tags: ['vegan'],
+      short: 'Kırmızı mercimek ve ince bulgurla yoğrulan, bol yeşillikli mercimek köftesi; marul ve limonla.',
+      description:
+        'Kırmızı mercimek haşlanıp ince bulgurla demlenir; zeytinyağında kavrulan soğan, salça, isot, taze soğan ve maydanozla yoğrulur. Elde şekillendirilip marul yapraklarıyla, yanında limonla servis edilir. Günler ve çay davetleri için birebir.',
+      ingredients: ['Kırmızı mercimek', 'İnce köftelik bulgur', 'Kuru soğan', 'Zeytinyağı', 'Domates salçası', 'Biber salçası', 'Taze soğan', 'Maydanoz', 'İsot', 'Kimyon', 'Nar ekşisi', 'Limon', 'Tuz', 'Marul'],
+      allergens: ['Gluten'],
+      serving: '1 adet ≈ 25–30 g · 1 porsiyon 6–7 adet',
+      storage: 'Buzdolabında 2 gün',
+      options: [
+        { id: 'a30', label: '30 Adet', detail: '≈ 850 g · 4–5 kişilik', price: 420 },
+        { id: 'a60', label: '60 Adet', detail: '≈ 1,7 kg · 8–10 kişilik', price: 800 },
+        { id: 'a100', label: '100 Adet', detail: '≈ 2,8 kg · 15–18 kişilik', price: 1300 },
+      ],
+    },
     /* ------------------------------------------------------------------ */
     /* HAMUR İŞLERİ                                                        */
     /* ------------------------------------------------------------------ */
@@ -242,6 +290,31 @@ window.MENU = {
       ],
     },
 
+    {
+      id: 'su-boregi',
+      name: 'Su Böreği',
+      aliases: ['borek', 'börek', 'su boregi', 'peynirli börek', 'kıymalı börek'],
+      category: 'hamur-isleri',
+      image: 'su-boregi.svg',
+      illustrated: true,
+      tags: ['vejetaryen'],
+      short: 'Yufkası elde açılıp haşlanan, kat kat tereyağlı su böreği; peynirli veya kıymalı.',
+      description:
+        'Yumurtalı hamur ince ince açılır, her kat tek tek haşlanıp soğuk suya alınır ve bol tereyağıyla tepsiye serilir. Lor-beyaz peynir ve maydanozlu ya da soğanlı dana kıymalı iç harçla fırında kızartılır. Tepsi kare dilimlenmiş olarak teslim edilir.',
+      ingredients: ['Un', 'Yumurta', 'Tuz', 'Tereyağı', 'Süt', 'Beyaz peynir', 'Lor peyniri', 'Maydanoz', 'İç harç (seçime göre)'],
+      allergens: ['Gluten', 'Yumurta', 'Süt'],
+      serving: '1 dilim ≈ 150–170 g',
+      storage: 'Buzdolabında 3 gün · tüketmeden önce ısıtın',
+      variantLabel: 'İç harç',
+      variants: [
+        { id: 'peynirli', name: 'Peynirli & maydanozlu', prices: [750, 1400] },
+        { id: 'kiymali', name: 'Kıymalı (vejetaryen değildir)', prices: [900, 1700] },
+      ],
+      options: [
+        { id: 'yt', label: 'Yarım Tepsi', detail: '8 dilim · ≈ 1,3 kg' },
+        { id: 'tt', label: 'Tam Tepsi', detail: '16 dilim · ≈ 2,6 kg' },
+      ],
+    },
     /* ------------------------------------------------------------------ */
     /* SÜTLÜ & KUP TATLILAR                                                */
     /* ------------------------------------------------------------------ */
@@ -370,6 +443,53 @@ window.MENU = {
       ],
     },
 
+    {
+      id: 'firin-sutlac',
+      name: 'Fırın Sütlaç',
+      aliases: ['sutlac', 'sütlaç', 'sütlü', 'fırın sütlaç', 'pirinç tatlısı'],
+      category: 'tatlilar',
+      image: 'firin-sutlac.svg',
+      illustrated: true,
+      tags: ['vejetaryen', 'glutensiz'],
+      short: 'Toprak güveçte, üstü fırında kızarmış klasik sütlaç; tarçın ve fındıkla.',
+      description:
+        'Baldo pirinç sütte ağır ağır pişirilir, pirinç unuyla kıvamlanır. Toprak güveçlere paylanıp üzeri nar gibi kızarana kadar fırınlanır. İsteğe göre tarçın ve fındıkla servis edilir.',
+      ingredients: ['Süt', 'Baldo pirinç', 'Toz şeker', 'Pirinç unu', 'Vanilya', 'Tarçın (ayrı)', 'Fındık (ayrı)'],
+      allergens: ['Süt', 'Fındık (isteğe bağlı)'],
+      serving: '1 güveç ≈ 200–220 g',
+      storage: 'Buzdolabında 3 gün',
+      options: [
+        { id: 'k1', label: '1 Güveç', detail: 'Tek kişilik', price: 150 },
+        { id: 'k4', label: '4\'lü Kutu', detail: '4 kişilik', price: 560 },
+        { id: 'k8', label: '8\'li Kutu', detail: '8 kişilik', price: 1080 },
+      ],
+    },
+    {
+      id: 'ev-baklavasi',
+      name: 'Ev Baklavası',
+      aliases: ['baklava', 'cevizli', 'fıstıklı', 'şerbetli', 'bayram'],
+      category: 'tatlilar',
+      image: 'ev-baklavasi.svg',
+      illustrated: true,
+      tags: ['vejetaryen'],
+      short: 'Elde açılan 40 kat yufka, bol tereyağı ve iç; şerbeti tam kıvamında ev baklavası.',
+      description:
+        'Nişastayla incecik açılan yufkalar kat kat dizilir, araya bol ceviz ya da Antep fıstığı serpilir. Sade tereyağıyla fırınlanır, ılık şerbetle buluşturulur. Bayramlar, misafirler ve hediyelik kutular için.',
+      ingredients: ['Un', 'Yumurta', 'Süt', 'Nişasta', 'Sade tereyağı', 'Ceviz içi veya Antep fıstığı', 'Toz şeker', 'Su', 'Limon'],
+      allergens: ['Gluten', 'Yumurta', 'Süt', 'Ceviz / Antep fıstığı'],
+      serving: '1 dilim ≈ 40–45 g',
+      storage: 'Oda sıcaklığında, kapalı kapta 1 hafta',
+      variantLabel: 'İç',
+      variants: [
+        { id: 'cevizli', name: 'Cevizli', prices: [650, 1250, 2400] },
+        { id: 'fistikli', name: 'Antep fıstıklı', prices: [950, 1850, 3600] },
+      ],
+      options: [
+        { id: 'g500', label: '500 g', detail: '≈ 12 dilim' },
+        { id: 'kg1', label: '1 kg', detail: '≈ 24 dilim' },
+        { id: 'kg2', label: '2 kg (tepsi)', detail: '≈ 48 dilim · ikramlık' },
+      ],
+    },
     /* ------------------------------------------------------------------ */
     /* CHEESECAKE                                                          */
     /* ------------------------------------------------------------------ */
