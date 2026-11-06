@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-cream font-sans text-cocoa antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-cocoa;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    @apply bg-honey-200 text-cocoa;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-sunset ring-offset-2 ring-offset-cream;
+  }
+  input, select, textarea {
+    font: inherit;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  /* Butonlar */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-extrabold transition duration-200 ease-out disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-pepper text-white shadow-cta hover:-translate-y-0.5 hover:bg-pepper-600 active:translate-y-0 active:bg-pepper-700;
+  }
+  .btn-secondary {
+    @apply btn border-2 border-cocoa/10 bg-white text-cocoa shadow-warm-sm hover:-translate-y-0.5 hover:border-sunset/40 hover:text-sunset-700;
+  }
+  .btn-ghost {
+    @apply btn bg-cream-200/70 text-cocoa hover:bg-cream-300;
+  }
+
+  /* Kategori çipleri */
+  .chip {
+    @apply inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-cocoa/10 bg-white px-4 py-2.5 text-sm font-bold text-cocoa-700 shadow-warm-sm transition hover:border-sunset/50 hover:text-sunset-700;
+  }
+  .chip[aria-pressed='true'] {
+    @apply border-sunset bg-sunset text-white shadow-warm hover:text-white;
+  }
+  .chip-diet[aria-pressed='true'] {
+    @apply border-leaf bg-leaf text-white;
+  }
+
+  /* Rozetler */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide;
+  }
+  .badge-honey {
+    @apply badge bg-honey text-cocoa;
+  }
+  .badge-pepper {
+    @apply badge bg-pepper text-white;
+  }
+  .badge-leaf {
+    @apply badge bg-leaf-50 text-leaf-700 ring-1 ring-leaf/20;
+  }
+  .badge-cream {
+    @apply badge bg-white/90 text-cocoa backdrop-blur;
+  }
+
+  /* Form alanları */
+  .field-label {
+    @apply mb-1.5 block text-sm font-bold text-cocoa-700;
+  }
+  .field {
+    @apply w-full rounded-2xl border border-cocoa/15 bg-white px-4 py-3 text-[15px] text-cocoa placeholder:text-cocoa-400 transition focus:border-sunset focus:outline-none focus:ring-4 focus:ring-sunset/15;
+  }
+  .field[aria-invalid='true'] {
+    @apply border-pepper ring-4 ring-pepper/10;
+  }
+
+  /* Seçim kartları (porsiyon, çeşit) */
+  .option-card {
+    @apply relative flex cursor-pointer items-center justify-between gap-3 rounded-2xl border-2 border-cocoa/10 bg-white px-4 py-3 transition hover:border-sunset/40;
+  }
+  .option-card:has(input:checked) {
+    @apply border-sunset bg-sunset-50 shadow-warm-sm;
+  }
+  .option-card:has(input:focus-visible) {
+    @apply ring-2 ring-sunset ring-offset-2;
+  }
+  .variant-pill {
+    @apply cursor-pointer rounded-full border-2 border-cocoa/10 bg-white px-4 py-2 text-sm font-bold text-cocoa-700 transition hover:border-sunset/40;
+  }
+  .variant-pill:has(input:checked) {
+    @apply border-sunset bg-sunset text-white;
+  }
+  .variant-pill:has(input:focus-visible) {
+    @apply ring-2 ring-sunset ring-offset-2;
+  }
+
+  /* Adet seçici */
+  .stepper {
+    @apply inline-flex items-center rounded-full border border-cocoa/10 bg-white p-1 shadow-warm-sm;
+  }
+  .stepper button {
+    @apply grid h-9 w-9 place-items-center rounded-full text-cocoa transition hover:bg-cream-200 active:scale-95 disabled:opacity-40;
+  }
+  .stepper output {
+    @apply w-9 text-center text-[15px] font-extrabold tabular-nums;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-sunset-700;
+  }
+  .section-title {
+    @apply mt-2 text-3xl font-semibold leading-tight sm:text-4xl;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grain {
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(249, 199, 79, 0.22), transparent 42%),
+      radial-gradient(circle at 85% 10%, rgba(243, 114, 44, 0.14), transparent 40%),
+      radial-gradient(circle at 70% 90%, rgba(229, 56, 59, 0.08), transparent 45%);
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Radyo noktası (porsiyon kartları) */
+.radio-dot {
+  @apply grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-cocoa/20 bg-white transition;
+}
+.option-card:has(input:checked) .radio-dot {
+  @apply border-sunset;
+}
+.option-card:has(input:checked) .radio-dot::after {
+  content: '';
+  @apply h-2.5 w-2.5 rounded-full bg-sunset;
+}
+
+/* Panel / modal geçişleri */
+.modal-root .overlay {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.modal-root.is-open .overlay {
+  opacity: 1;
+}
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.modal-root.is-open .drawer-panel {
+  transform: none;
+}
+.sheet-panel {
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+@media (min-width: 640px) {
+  .sheet-panel {
+    transform: translateY(24px) scale(0.98);
+    opacity: 0;
+  }
+}
+.modal-root.is-open .sheet-panel {
+  transform: none;
+  opacity: 1;
+}
+body.lock {
+  overflow: hidden;
+}
+
+/* WhatsApp mesaj önizlemesi */
+.wa-bubble {
+  @apply relative rounded-2xl rounded-tr-md bg-leaf-50 p-4 text-[13px] leading-relaxed text-cocoa shadow-warm-sm ring-1 ring-leaf/15;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Mobil alt sepet çubuğu için sayfanın altında boşluk */
+body.has-cart-bar {
+  padding-bottom: 5.5rem;
+}
+@media (min-width: 1024px) {
+  body.has-cart-bar {
+    padding-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

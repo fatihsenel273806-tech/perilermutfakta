@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Supangle illüstrasyonu">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#FFF8EF"/>
+      <stop offset="0.6" stop-color="#FCEFDF"/>
+      <stop offset="1" stop-color="#F3DCC0"/>
+    </radialGradient>
+    <linearGradient id="pud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E3B24"/>
+      <stop offset="1" stop-color="#3F1F12"/>
+    </linearGradient>
+    <linearGradient id="cake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5B3322"/>
+      <stop offset="1" stop-color="#3A1E13"/>
+    </linearGradient>
+    <radialGradient id="top" cx="45%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#8A5233"/>
+      <stop offset="1" stop-color="#5A2F1C"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBE39A"/>
+      <stop offset="0.5" stop-color="#E5AC2B"/>
+      <stop offset="1" stop-color="#B9861A"/>
+    </linearGradient>
+    <clipPath id="cup">
+      <path d="M256 236 C256 332 274 408 307 426 Q400 447 493 426 C526 408 544 332 544 236 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="140" cy="110" r="70" fill="#F9C74F" opacity=".18"/>
+  <circle cx="690" cy="500" r="90" fill="#F3722C" opacity=".10"/>
+
+  <!-- tabak -->
+  <ellipse cx="400" cy="478" rx="262" ry="52" fill="#B9861A" opacity=".12"/>
+  <ellipse cx="400" cy="458" rx="250" ry="54" fill="#FFFDF9"/>
+  <ellipse cx="400" cy="458" rx="250" ry="54" fill="none" stroke="#E5AC2B" stroke-width="3" opacity=".7"/>
+  <ellipse cx="400" cy="452" rx="196" ry="36" fill="#FCEFDF" opacity=".7"/>
+
+  <!-- kaşık -->
+  <g transform="rotate(-18 640 430)">
+    <rect x="560" y="424" width="170" height="12" rx="6" fill="url(#gold)"/>
+    <ellipse cx="560" cy="430" rx="40" ry="24" fill="url(#gold)"/>
+    <ellipse cx="552" cy="425" rx="20" ry="9" fill="#FFF8EF" opacity=".55"/>
+  </g>
+
+  <!-- kase içi katmanlar -->
+  <g clip-path="url(#cup)">
+    <rect x="240" y="236" width="320" height="220" fill="url(#pud)"/>
+    <rect x="240" y="372" width="320" height="90" fill="url(#cake)"/>
+    <g fill="#2E170E" opacity=".55">
+      <circle cx="290" cy="392" r="5"/><circle cx="330" cy="410" r="4"/><circle cx="372" cy="388" r="6"/>
+      <circle cx="420" cy="404" r="4"/><circle cx="462" cy="390" r="5"/><circle cx="500" cy="408" r="4"/>
+      <circle cx="350" cy="426" r="3"/><circle cx="440" cy="426" r="3"/>
+    </g>
+    <path d="M240 372 Q300 362 360 372 T480 372 T560 370" fill="none" stroke="#7A452B" stroke-width="6" opacity=".6"/>
+  </g>
+
+  <!-- üst yüzey -->
+  <ellipse cx="400" cy="238" rx="144" ry="28" fill="url(#top)"/>
+  <ellipse cx="370" cy="232" rx="70" ry="9" fill="#B8754B" opacity=".45"/>
+
+  <!-- hindistan cevizi & çikolata talaşı -->
+  <g fill="#FFFDF9">
+    <rect x="300" y="236" width="12" height="4" rx="2" transform="rotate(20 306 238)"/>
+    <rect x="336" y="226" width="10" height="4" rx="2" transform="rotate(-30 341 228)"/>
+    <rect x="364" y="244" width="12" height="4" rx="2" transform="rotate(10 370 246)"/>
+    <rect x="404" y="224" width="10" height="4" rx="2" transform="rotate(40 409 226)"/>
+    <rect x="440" y="242" width="12" height="4" rx="2" transform="rotate(-15 446 244)"/>
+    <rect x="470" y="230" width="10" height="4" rx="2" transform="rotate(25 475 232)"/>
+    <rect x="320" y="250" width="9" height="3" rx="1.5"/>
+    <rect x="456" y="252" width="9" height="3" rx="1.5" transform="rotate(30 460 253)"/>
+    <rect x="388" y="254" width="10" height="3" rx="1.5" transform="rotate(-20 393 255)"/>
+  </g>
+  <g fill="none" stroke="#2E170E" stroke-width="5" stroke-linecap="round">
+    <path d="M350 238 q8 -8 16 0"/>
+    <path d="M424 236 q8 -8 16 0"/>
+    <path d="M386 248 q6 -6 12 0"/>
+  </g>
+
+  <!-- vişne -->
+  <path d="M402 214 C 404 190, 420 176, 440 170" fill="none" stroke="#4A7C59" stroke-width="4" stroke-linecap="round"/>
+  <path d="M430 172 c 10 -10 24 -8 26 -2 c -10 6 -18 6 -26 2z" fill="#4A7C59"/>
+  <circle cx="400" cy="224" r="17" fill="#E5383B"/>
+  <circle cx="394" cy="218" r="5" fill="#FFFDF9" opacity=".6"/>
+
+  <!-- cam kase -->
+  <path d="M256 236 C256 332 274 408 307 426 Q400 447 493 426 C526 408 544 332 544 236" fill="none" stroke="#FFFFFF" stroke-width="5" opacity=".85"/>
+  <path d="M276 260 C278 330 292 384 312 406" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" opacity=".35"/>
+  <ellipse cx="400" cy="236" rx="150" ry="31" fill="none" stroke="#FFFFFF" stroke-width="5" opacity=".9"/>
+  <ellipse cx="400" cy="236" rx="150" ry="31" fill="none" stroke="#C2ADA2" stroke-width="1.5" opacity=".7"/>
+</svg>
