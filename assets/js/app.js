@@ -405,24 +405,24 @@
       .map((p) => {
         const camp = campaignOption(p);
         const priceHtml = camp
-          ? `<span class="text-sm font-bold text-cream-300/80 line-through">${money(camp.opt.price)}</span> <span class="text-2xl font-extrabold text-honey">${money(camp.opt.campaignPrice)}</span>`
-          : `<span class="text-xs font-bold uppercase tracking-wide text-cream-300/80">başlayan</span> <span class="text-2xl font-extrabold">${money(minPrice(p))}</span>`;
+          ? `<span class="text-xs font-bold text-cream-300/80 line-through">${money(camp.opt.price)}</span> <span class="text-lg font-extrabold text-honey sm:text-2xl">${money(camp.opt.campaignPrice)}</span>`
+          : `<span class="text-[10px] font-bold uppercase tracking-wide text-cream-300/80 sm:text-xs">başlayan</span> <span class="text-lg font-extrabold sm:text-2xl">${money(minPrice(p))}</span>`;
         return `
-        <article class="group relative w-[78%] shrink-0 snap-start overflow-hidden rounded-4xl bg-cocoa shadow-warm-lg sm:w-[44%] lg:w-[31%] xl:w-[23.5%]">
+        <article class="group relative w-[46%] shrink-0 snap-start overflow-hidden rounded-2xl bg-cocoa shadow-warm sm:w-[44%] sm:rounded-4xl sm:shadow-warm-lg lg:w-[31%] xl:w-[23.5%]">
           <div class="aspect-[4/5] overflow-hidden">
-            ${imgTag(p.image, p.name, 'h-full w-full object-cover transition duration-700 group-hover:scale-105', '(min-width:1280px) 24vw, (min-width:1024px) 31vw, (min-width:640px) 44vw, 78vw')}
+            ${imgTag(p.image, p.name, 'h-full w-full object-cover transition duration-700 group-hover:scale-105', '(min-width:1280px) 24vw, (min-width:1024px) 31vw, (min-width:640px) 44vw, 46vw')}
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-cocoa via-cocoa/30 to-transparent" aria-hidden="true"></div>
-          <div class="absolute left-4 top-4 flex flex-wrap gap-1.5">${imageBadges(p)}</div>
-          <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-white">
+          <div class="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-4 sm:top-4 sm:gap-1.5">${imageBadges(p)}</div>
+          <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-2.5 text-white sm:gap-3 sm:p-5">
             <div class="min-w-0">
-              <p class="text-xs font-extrabold uppercase tracking-wider text-honey">${esc(catById[p.category].name)}</p>
-              <h3 class="mt-1 font-display text-2xl font-semibold leading-tight text-white">${esc(p.name)}</h3>
-              <p class="mt-2 flex items-baseline gap-2">${priceHtml}</p>
+              <p class="text-[9px] font-extrabold uppercase tracking-wider text-honey sm:text-xs">${esc(catById[p.category].name)}</p>
+              <h3 class="mt-0.5 font-display text-[15px] font-semibold leading-tight text-white sm:mt-1 sm:text-2xl">${esc(p.name)}</h3>
+              <p class="mt-1 flex flex-wrap items-baseline gap-x-1.5 sm:mt-2 sm:gap-2">${priceHtml}</p>
             </div>
-            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-pepper text-white shadow-cta transition group-hover:scale-110" aria-hidden="true">${icon('plus', 'h-6 w-6')}</span>
+            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-pepper text-white shadow-cta transition group-hover:scale-110 sm:h-12 sm:w-12" aria-hidden="true">${icon('plus', 'h-4 w-4 sm:h-6 sm:w-6')}</span>
           </div>
-          <button type="button" data-open="${p.id}" class="absolute inset-0 z-10 rounded-4xl" aria-label="${esc(p.name)} – seçenekleri gör"></button>
+          <button type="button" data-open="${p.id}" class="absolute inset-0 z-10 rounded-2xl sm:rounded-4xl" aria-label="${esc(p.name)} – seçenekleri gör"></button>
         </article>`;
       })
       .join('');
@@ -438,14 +438,14 @@
     PRODUCTS.forEach((p) => (counts[p.category] = (counts[p.category] || 0) + 1));
     const chip = (id, label, ic, n) => `
       <button type="button" class="chip" data-cat="${id}" aria-pressed="${filters.category === id}">
-        ${ic ? icon(ic, 'h-4 w-4') : ''}${esc(label)}<span class="rounded-full bg-cocoa/5 px-1.5 text-[11px] font-black opacity-80">${n}</span>
+        ${ic ? icon(ic, 'h-3.5 w-3.5 sm:h-4 sm:w-4') : ''}${esc(label)}<span class="rounded-full bg-cocoa/5 px-1.5 text-[10px] sm:text-[11px] font-black opacity-80">${n}</span>
       </button>`;
     $('#category-chips').innerHTML =
       chip('all', 'Tümü', 'utensils', PRODUCTS.length) + CATEGORIES.map((c) => chip(c.id, c.name, c.icon, counts[c.id] || 0)).join('');
     $('#diet-chips').innerHTML =
-      `<span class="shrink-0 text-xs font-bold text-cocoa-400">Filtre:</span>` +
+      `<span class="shrink-0 text-[11px] font-bold text-cocoa-400 sm:text-xs">Filtre:</span>` +
       DIETS.map(
-        (d) => `<button type="button" class="chip chip-diet px-3 py-1.5 text-xs" data-diet="${d.id}" aria-pressed="${filters.diet === d.id}">${icon('leaf', 'h-3.5 w-3.5')}${d.label}</button>`
+        (d) => `<button type="button" class="chip chip-diet gap-1 px-2.5 py-1 text-[11px] sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs" data-diet="${d.id}" aria-pressed="${filters.diet === d.id}">${icon('leaf', 'h-3 w-3 sm:h-3.5 sm:w-3.5')}${d.label}</button>`
       ).join('');
   }
 
@@ -465,32 +465,32 @@
       .map((o) => `<span class="rounded-full bg-cream-200 px-2.5 py-1 text-[11px] font-bold text-cocoa-700">${esc(o.label)}</span>`)
       .join('');
     const price = camp
-      ? `<p class="whitespace-nowrap text-[11px] font-extrabold uppercase tracking-wide text-pepper">${esc(camp.opt.label)} · <span class="text-cocoa-400 line-through">${money(camp.opt.price)}</span></p>
-         <p class="whitespace-nowrap text-lg font-black text-pepper sm:text-xl">${money(camp.opt.campaignPrice)}</p>`
-      : `<p class="whitespace-nowrap text-[11px] font-bold uppercase tracking-wide text-cocoa-400">başlayan fiyat</p>
-         <p class="whitespace-nowrap text-lg font-black sm:text-xl">${money(minPrice(p))}</p>`;
+      ? `<p class="whitespace-nowrap text-[9px] font-extrabold uppercase tracking-wide text-pepper sm:text-[11px]">${esc(camp.opt.label)} · <span class="text-cocoa-400 line-through">${money(camp.opt.price)}</span></p>
+         <p class="whitespace-nowrap text-base font-black leading-tight text-pepper sm:text-xl">${money(camp.opt.campaignPrice)}</p>`
+      : `<p class="whitespace-nowrap text-[9px] font-bold uppercase tracking-wide text-cocoa-400 sm:text-[11px]">başlayan fiyat</p>
+         <p class="whitespace-nowrap text-base font-black leading-tight sm:text-xl">${money(minPrice(p))}</p>`;
     return `
-    <article class="group flex animate-fade-up overflow-hidden rounded-3xl bg-white shadow-warm ring-1 ring-cocoa/5 transition duration-300 hover:-translate-y-1 hover:shadow-warm-lg sm:flex-col" style="animation-delay:${Math.min(i, 8) * 45}ms">
-      <button type="button" data-open="${p.id}" class="relative block min-h-[156px] w-[36%] max-w-[160px] shrink-0 self-stretch overflow-hidden bg-cream-200 sm:aspect-[4/3] sm:min-h-0 sm:w-auto sm:max-w-none sm:self-auto" aria-label="${esc(p.name)} detaylarını gör">
+    <article class="group flex animate-fade-up overflow-hidden rounded-2xl bg-white shadow-warm-sm ring-1 sm:rounded-3xl sm:shadow-warm ring-cocoa/5 transition duration-300 hover:-translate-y-1 hover:shadow-warm-lg sm:flex-col" style="animation-delay:${Math.min(i, 8) * 45}ms">
+      <button type="button" data-open="${p.id}" class="relative block min-h-[112px] w-[104px] shrink-0 self-stretch overflow-hidden bg-cream-200 sm:aspect-[4/3] sm:min-h-0 sm:w-auto sm:max-w-none sm:self-auto" aria-label="${esc(p.name)} detaylarını gör">
         ${imgTag(p.image, p.name, 'absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105', '(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:640px) 50vw, 160px')}
-        <span class="absolute left-2 top-2 flex flex-col items-start gap-1 sm:left-3 sm:top-3 sm:flex-row sm:flex-wrap sm:gap-1.5">${imageBadges(p)}</span>
-        ${p.illustrated ? '<span class="badge-cream absolute bottom-2 left-2 normal-case tracking-normal sm:bottom-3 sm:left-3">Görsel temsilidir</span>' : ''}
+        <span class="absolute left-1.5 top-1.5 flex flex-col items-start gap-1 sm:left-3 sm:top-3 sm:flex-row sm:flex-wrap sm:gap-1.5">${imageBadges(p)}</span>
+        ${p.illustrated ? '<span class="badge-cream absolute bottom-1.5 left-1.5 normal-case tracking-normal sm:bottom-3 sm:left-3">Görsel temsilidir</span>' : ''}
       </button>
-      <div class="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
+      <div class="flex min-w-0 flex-1 flex-col px-3 py-2.5 sm:p-5">
         <div class="hidden flex-wrap items-center gap-1.5 sm:flex">
           <span class="text-[11px] font-extrabold uppercase tracking-wider text-sunset-700">${esc(catById[p.category].name)}</span>
           ${tagBadges(p)}
         </div>
-        <h3 class="text-lg font-semibold leading-snug sm:mt-2 sm:text-[1.35rem]">
+        <h3 class="text-[15px] font-semibold leading-snug sm:mt-2 sm:text-[1.35rem]">
           <button type="button" data-open="${p.id}" class="text-left transition hover:text-pepper">${esc(p.name)}</button>
         </h3>
-        <p class="mt-1 line-clamp-2 text-[13px] leading-relaxed text-cocoa-500 sm:mt-1.5 sm:text-sm">${esc(p.short)}</p>
-        <div class="mt-2 flex flex-wrap gap-1 sm:hidden">${tagBadges(p)}</div>
+        <p class="mt-0.5 line-clamp-2 text-xs leading-snug text-cocoa-500 sm:mt-1.5 sm:text-sm sm:leading-relaxed">${esc(p.short)}</p>
+        <div class="mt-1.5 flex flex-wrap gap-1 sm:hidden">${tagBadges(p)}</div>
         <div class="mt-3 hidden flex-wrap gap-1.5 sm:flex">${optionPills}</div>
         <p class="mt-3 hidden items-center gap-1.5 text-xs font-semibold text-cocoa-500 sm:flex">${icon('weight', 'h-3.5 w-3.5 shrink-0 text-sunset')}${esc(p.serving)}</p>
-        <div class="mt-auto flex items-end justify-between gap-2 pt-3 sm:gap-3 sm:pt-5">
+        <div class="mt-auto flex items-end justify-between gap-2 pt-2 sm:gap-3 sm:pt-5">
           <div class="min-w-0">${price}</div>
-          <button type="button" data-open="${p.id}" class="btn-primary shrink-0 px-3.5 py-2 text-sm sm:px-4 sm:py-2.5">${icon('plus', 'h-4 w-4')}<span class="sm:hidden">Ekle</span><span class="hidden sm:inline">Sepete Ekle</span></button>
+          <button type="button" data-open="${p.id}" class="btn-primary shrink-0 gap-1 px-3 py-1.5 text-xs shadow-warm-sm sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm sm:shadow-cta">${icon('plus', 'h-3.5 w-3.5 sm:h-4 sm:w-4')}<span class="sm:hidden">Ekle</span><span class="hidden sm:inline">Sepete Ekle</span></button>
         </div>
       </div>
     </article>`;
@@ -521,18 +521,18 @@
       const items = list.filter((p) => p.category === c.id);
       if (!items.length) return '';
       return `
-        <section class="mb-14 last:mb-6" aria-labelledby="cat-${c.id}">
-          <div class="mb-6 flex items-end justify-between gap-4 border-b border-cocoa/10 pb-4">
-            <div class="flex items-center gap-3">
-              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sunset text-white shadow-warm">${icon(c.icon, 'h-6 w-6')}</span>
+        <section class="mb-8 last:mb-4 sm:mb-14 sm:last:mb-6" aria-labelledby="cat-${c.id}">
+          <div class="mb-3 flex items-end justify-between gap-3 border-b border-cocoa/10 pb-2.5 sm:mb-6 sm:gap-4 sm:pb-4">
+            <div class="flex min-w-0 items-center gap-2.5 sm:gap-3">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sunset text-white shadow-warm-sm sm:h-12 sm:w-12 sm:rounded-2xl sm:shadow-warm">${icon(c.icon, 'h-5 w-5 sm:h-6 sm:w-6')}</span>
               <div>
-                <h3 id="cat-${c.id}" class="text-2xl font-semibold sm:text-[1.7rem]">${esc(c.name)}</h3>
-                <p class="text-sm font-semibold text-sunset-700">${esc(c.blurb)}</p>
+                <h3 id="cat-${c.id}" class="text-lg font-semibold leading-tight sm:text-[1.7rem]">${esc(c.name)}</h3>
+                <p class="truncate text-xs font-semibold text-sunset-700 sm:text-sm">${esc(c.blurb)}</p>
               </div>
             </div>
-            <span class="shrink-0 text-sm font-bold text-cocoa-400">${items.length} ürün</span>
+            <span class="shrink-0 text-xs font-bold text-cocoa-400 sm:text-sm">${items.length} ürün</span>
           </div>
-          <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">${items.map((p) => productCard(p, i++)).join('')}</div>
+          <div class="grid gap-2.5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">${items.map((p) => productCard(p, i++)).join('')}</div>
         </section>`;
     }).join('');
   }
@@ -594,10 +594,10 @@
     $('#product-panel').innerHTML = `
       <div class="min-h-0 flex-1 overflow-y-auto sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] sm:overflow-hidden">
         <div class="relative bg-cream-200 sm:h-full">
-          <div id="pd-image" class="aspect-[16/11] w-full overflow-hidden sm:aspect-auto sm:h-full">
+          <div id="pd-image" class="aspect-[16/10] w-full overflow-hidden sm:aspect-auto sm:h-full">
             ${imgTag(p.image, p.name, 'h-full w-full object-cover', '(min-width:640px) 48vw, 100vw', true)}
           </div>
-          <span class="absolute left-4 top-4 flex flex-wrap gap-1.5">${imageBadges(p)}</span>
+          <span class="absolute left-3 top-3 flex flex-wrap gap-1.5 sm:left-4 sm:top-4">${imageBadges(p)}</span>
           ${p.illustrated ? '<span class="badge-cream absolute bottom-4 left-4 normal-case tracking-normal">Görsel temsilidir</span>' : ''}
           ${
             gallery
@@ -608,17 +608,17 @@
                   .join('')}</div>`
               : ''
           }
-          <button type="button" data-close-product class="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/95 text-cocoa shadow-warm transition hover:text-pepper" aria-label="Kapat">${icon('x', 'h-5 w-5')}</button>
+          <button type="button" data-close-product class="absolute right-3 top-3 grid h-9 w-9 sm:right-4 sm:top-4 sm:h-11 sm:w-11 place-items-center rounded-full bg-white/95 text-cocoa shadow-warm transition hover:text-pepper" aria-label="Kapat">${icon('x', 'h-5 w-5')}</button>
         </div>
 
         <div class="flex flex-col sm:min-h-0">
-          <div class="p-5 sm:min-h-0 sm:flex-1 sm:overflow-y-auto sm:p-8">
+          <div class="p-4 sm:min-h-0 sm:flex-1 sm:overflow-y-auto sm:p-8">
             <div class="flex flex-wrap items-center gap-1.5">
               <span class="text-xs font-extrabold uppercase tracking-wider text-sunset-700">${esc(cat.name)}</span>
               ${tagBadges(p)}
             </div>
-            <h2 id="product-title" class="mt-2 text-3xl font-semibold leading-tight sm:text-[2.2rem]">${esc(p.name)}</h2>
-            <p class="mt-3 leading-relaxed text-cocoa-500">${esc(p.description)}</p>
+            <h2 id="product-title" class="mt-1 text-[1.4rem] font-semibold leading-tight sm:mt-2 sm:text-[2.2rem]">${esc(p.name)}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-cocoa-500 sm:mt-3 sm:text-base">${esc(p.description)}</p>
 
             ${
               campaignOn(p) && CFG.campaign
@@ -669,7 +669,7 @@
               </div>
             </fieldset>
 
-            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            <div class="mt-5 grid grid-cols-2 gap-2 sm:mt-6 sm:gap-3">
               <div class="rounded-2xl bg-white p-4 ring-1 ring-cocoa/5">
                 <p class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-sunset-700">${icon('weight', 'h-4 w-4')}Porsiyon gramajı</p>
                 <p class="mt-1 text-sm font-semibold">${esc(p.serving)}</p>
@@ -699,13 +699,13 @@
             <p class="mt-4 flex items-center gap-2 text-xs font-semibold text-cocoa-400">${icon('calendar', 'h-4 w-4')}En az ${Number(CFG.leadTimeDays) || 1} gün önceden sipariş verilmelidir.</p>
           </div>
 
-          <div class="sticky bottom-0 flex items-center gap-3 border-t border-cocoa/10 bg-cream/95 p-4 backdrop-blur sm:px-8">
+          <div class="sticky bottom-0 flex items-center gap-2 border-t border-cocoa/10 bg-cream/95 px-3 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] backdrop-blur sm:gap-3 sm:p-4 sm:px-8">
             <div class="stepper" role="group" aria-label="Adet">
               <button type="button" data-pd-qty="-1" aria-label="Azalt">${icon('minus', 'h-4 w-4')}</button>
               <output id="pd-qty" aria-live="polite">1</output>
               <button type="button" data-pd-qty="1" aria-label="Artır">${icon('plus', 'h-4 w-4')}</button>
             </div>
-            <button type="button" id="pd-add" class="btn-primary min-w-0 flex-1 whitespace-nowrap px-4 py-3.5 text-[15px] sm:text-base">
+            <button type="button" id="pd-add" class="btn-primary min-w-0 flex-1 whitespace-nowrap px-3 py-3 text-sm sm:px-4 sm:py-3.5 sm:text-base">
               ${icon('bag', 'hidden h-5 w-5 shrink-0 min-[400px]:block')}<span>Sepete Ekle</span><span class="opacity-60">·</span><span id="pd-total" class="tabular-nums"></span>
             </button>
           </div>

@@ -31,7 +31,7 @@
 
   <!-- Kampanya şeridi -->
   <div id="campaign-bar" class="bg-honey text-cocoa" hidden>
-    <button type="button" data-open="san-sebastian" class="mx-auto flex w-full max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center text-[13px] font-extrabold sm:text-sm">
+    <button type="button" data-open="san-sebastian" class="mx-auto flex w-full max-w-7xl items-center justify-center gap-2 px-3 py-1.5 text-center text-xs font-extrabold sm:px-4 sm:py-2 sm:text-sm">
       <span class="js-icon" data-icon="gift" data-class="h-4 w-4 shrink-0"></span>
       <span><span class="js-campaign-title"></span>: <span class="js-campaign-text font-black"></span></span>
       <span class="hidden underline decoration-2 underline-offset-2 sm:inline">Hemen sipariş ver</span>
@@ -40,12 +40,12 @@
 
   <!-- Üst menü -->
   <header id="site-header" class="sticky top-0 z-40 border-b border-cocoa/5 bg-cream/85 backdrop-blur-md transition-shadow">
-    <div class="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-      <a href="#top" class="flex items-center gap-3" aria-label="Periler Mutfakta ana sayfa">
-        <img src="favicon.svg" alt="" class="h-11 w-11 drop-shadow-sm" width="44" height="44" />
+    <div class="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-3 sm:h-[72px] sm:gap-4 sm:px-4 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-2 sm:gap-3" aria-label="Periler Mutfakta ana sayfa">
+        <img src="favicon.svg" alt="" class="h-8 w-8 drop-shadow-sm sm:h-11 sm:w-11" width="44" height="44" />
         <span class="leading-none">
-          <span class="block font-display text-[22px] font-semibold tracking-tight">Periler Mutfakta</span>
-          <span class="mt-1 block text-[11px] font-extrabold uppercase tracking-[0.2em] text-sunset-700">Ev yapımı lezzetler</span>
+          <span class="block font-display text-[17px] font-semibold tracking-tight sm:text-[22px]">Periler Mutfakta</span>
+          <span class="mt-0.5 block text-[8.5px] font-extrabold uppercase tracking-[0.18em] text-sunset-700 sm:mt-1 sm:text-[11px] sm:tracking-[0.2em]">Ev yapımı lezzetler</span>
         </span>
       </a>
 
@@ -62,11 +62,11 @@
           <span class="js-icon" data-icon="whatsapp" data-class="h-4 w-4 text-leaf"></span>
           <span>Bize Yazın</span>
         </a>
-        <button type="button" data-open-cart class="relative inline-flex h-11 items-center gap-2 rounded-full bg-pepper pl-4 pr-5 text-sm font-extrabold text-white shadow-cta transition hover:bg-pepper-600" aria-label="Sepeti aç">
+        <button type="button" data-open-cart class="relative inline-flex h-9 items-center gap-2 rounded-full bg-pepper px-3 text-sm sm:h-11 sm:pl-4 sm:pr-5 font-extrabold text-white shadow-cta transition hover:bg-pepper-600" aria-label="Sepeti aç">
           <span class="js-icon" data-icon="bag" data-class="h-5 w-5"></span>
           <span class="hidden sm:inline">Sepet</span>
           <span id="cart-total-header" class="hidden tabular-nums md:inline"></span>
-          <span id="cart-count" class="absolute -right-1.5 -top-1.5 grid h-6 min-w-6 place-items-center rounded-full bg-honey px-1.5 text-xs font-black text-cocoa ring-2 ring-cream" hidden>0</span>
+          <span id="cart-count" class="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 sm:h-6 sm:min-w-6 place-items-center rounded-full bg-honey px-1.5 text-xs font-black text-cocoa ring-2 ring-cream" hidden>0</span>
         </button>
       </div>
     </div>
@@ -75,40 +75,40 @@
   <main id="top">
     <!-- HERO -->
     <section class="relative overflow-hidden bg-grain">
-      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:px-8 lg:pb-24 lg:pt-16">
-        <div class="animate-fade-up">
-          <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-extrabold text-cocoa-700 shadow-warm-sm ring-1 ring-cocoa/5">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 px-4 pb-10 pt-5 sm:gap-12 sm:px-6 sm:pb-16 sm:pt-10 lg:grid-cols-[1.05fr_1fr] lg:px-8 lg:pb-24 lg:pt-16">
+        <div class="min-w-0 animate-fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[11px] font-extrabold text-cocoa-700 shadow-warm-sm ring-1 ring-cocoa/5 sm:px-4 sm:py-2 sm:text-xs">
             <span class="js-icon" data-icon="sparkles" data-class="h-4 w-4 text-sunset"></span>
             Ev yapımı · Katkısız · Her gün taze
           </span>
-          <h1 class="mt-6 text-balance text-[2.6rem] font-semibold leading-[1.05] sm:text-6xl lg:text-[4.1rem]">
-            Annemizin mutfağından <span class="relative whitespace-nowrap text-pepper">sofranıza<svg class="absolute -bottom-2 left-0 h-3 w-full text-honey" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 50 2, 150 2, 198 8" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span> lezzetler.
+          <h1 class="mt-3 text-balance text-[1.85rem] font-semibold leading-[1.1] sm:mt-6 sm:text-6xl sm:leading-[1.05] lg:text-[4.1rem]">
+            Annemizin mutfağından <span class="relative whitespace-nowrap text-pepper">sofranıza<svg class="absolute -bottom-1.5 left-0 h-2 w-full text-honey sm:-bottom-2 sm:h-3" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 50 2, 150 2, 198 8" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span> lezzetler.
           </h1>
-          <p class="mt-6 max-w-xl text-lg leading-relaxed text-cocoa-500">
+          <p class="mt-3 max-w-xl text-sm leading-relaxed text-cocoa-500 sm:mt-6 sm:text-lg">
             Yaprak sarmasından San Sebastian'a, poğaçadan triliçeye… Dilediğiniz porsiyonu seçin, sepetinize ekleyin; siparişiniz <strong class="text-cocoa">WhatsApp'a hazır mesaj</strong> olarak gelsin, size sadece <strong class="text-cocoa">Gönder</strong>'e basmak kalsın.
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#menu" class="btn-primary px-7 py-4 text-base">
+          <div class="mt-4 flex gap-2 sm:mt-8 sm:flex-wrap sm:gap-3">
+            <a href="#menu" class="btn-primary btn-lg min-w-0 flex-1 gap-1.5 sm:flex-none">
               Menüyü Keşfet
               <span class="js-icon" data-icon="arrow-right" data-class="h-5 w-5"></span>
             </a>
-            <a data-wa="info" target="_blank" rel="noopener" class="btn-secondary px-7 py-4 text-base">
+            <a data-wa="info" target="_blank" rel="noopener" class="btn-secondary btn-lg min-w-0 flex-1 gap-1.5 sm:flex-none">
               <span class="js-icon" data-icon="whatsapp" data-class="h-5 w-5 text-leaf"></span>
               WhatsApp'tan Sor
             </a>
           </div>
-          <dl class="mt-10 grid max-w-xl grid-cols-3 gap-3">
-            <div class="rounded-2xl bg-white/70 p-4 ring-1 ring-cocoa/5">
-              <dt class="text-xs font-bold text-cocoa-500">Çeşit</dt>
-              <dd class="mt-1 font-display text-2xl font-semibold"><span id="stat-count">19</span>+</dd>
+          <dl class="mt-5 grid max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
+            <div class="rounded-xl bg-white/70 px-3 py-2 ring-1 ring-cocoa/5 sm:rounded-2xl sm:p-4">
+              <dt class="text-[11px] font-bold text-cocoa-500 sm:text-xs">Çeşit</dt>
+              <dd class="mt-0.5 whitespace-nowrap font-display text-base font-semibold min-[380px]:text-lg sm:mt-1 sm:text-2xl"><span id="stat-count">19</span>+</dd>
             </div>
-            <div class="rounded-2xl bg-white/70 p-4 ring-1 ring-cocoa/5">
-              <dt class="text-xs font-bold text-cocoa-500">Ev yapımı</dt>
-              <dd class="mt-1 font-display text-2xl font-semibold">%100</dd>
+            <div class="rounded-xl bg-white/70 px-3 py-2 ring-1 ring-cocoa/5 sm:rounded-2xl sm:p-4">
+              <dt class="text-[11px] font-bold text-cocoa-500 sm:text-xs">Ev yapımı</dt>
+              <dd class="mt-0.5 whitespace-nowrap font-display text-base font-semibold min-[380px]:text-lg sm:mt-1 sm:text-2xl">%100</dd>
             </div>
-            <div class="rounded-2xl bg-white/70 p-4 ring-1 ring-cocoa/5">
-              <dt class="text-xs font-bold text-cocoa-500">Sipariş</dt>
-              <dd class="mt-1 font-display text-2xl font-semibold">1 gün önce</dd>
+            <div class="rounded-xl bg-white/70 px-3 py-2 ring-1 ring-cocoa/5 sm:rounded-2xl sm:p-4">
+              <dt class="text-[11px] font-bold text-cocoa-500 sm:text-xs">Sipariş</dt>
+              <dd class="mt-0.5 whitespace-nowrap font-display text-base font-semibold min-[380px]:text-lg sm:mt-1 sm:text-2xl">1 gün önce</dd>
             </div>
           </dl>
         </div>
@@ -116,7 +116,7 @@
         <div class="relative mx-auto w-full max-w-xl lg:max-w-none">
           <div class="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-honey/30 blur-3xl" aria-hidden="true"></div>
           <div class="absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-sunset/20 blur-3xl" aria-hidden="true"></div>
-          <div class="relative grid grid-cols-5 grid-rows-6 gap-3 sm:gap-4" style="aspect-ratio: 1 / 1;">
+          <div class="relative grid aspect-[4/3] grid-cols-5 grid-rows-6 gap-2 sm:aspect-square sm:gap-4">
             <button type="button" data-open="san-sebastian" class="col-span-3 row-span-4 overflow-hidden rounded-4xl shadow-warm-lg ring-4 ring-white" aria-label="San Sebastian Cheesecake">
               <img src="assets/img/san-sebastian-1280.webp" alt="Karamelize yüzeyli San Sebastian cheesecake, orman meyveleri ve bademle" class="h-full w-full object-cover transition duration-700 hover:scale-105" fetchpriority="high" />
             </button>
@@ -132,13 +132,13 @@
           </div>
 
           <!-- Yüzen kampanya kartı -->
-          <button type="button" data-open="san-sebastian" id="hero-campaign" class="absolute -bottom-8 left-1/2 flex w-[88%] max-w-sm -translate-x-1/2 items-center gap-3 rounded-3xl bg-white p-3 pr-5 text-left shadow-warm-lg ring-1 ring-cocoa/5 transition hover:-translate-y-1 sm:-bottom-8 sm:-left-8 sm:w-auto sm:translate-x-0" hidden>
-            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-honey text-cocoa">
+          <button type="button" data-open="san-sebastian" id="hero-campaign" class="absolute -bottom-6 left-1/2 flex w-[88%] max-w-sm -translate-x-1/2 items-center gap-2.5 rounded-2xl bg-white p-2 pr-4 sm:-bottom-8 sm:gap-3 sm:rounded-3xl sm:p-3 sm:pr-5 text-left shadow-warm-lg ring-1 ring-cocoa/5 transition hover:-translate-y-1 sm:-bottom-8 sm:-left-8 sm:w-auto sm:translate-x-0" hidden>
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-honey text-cocoa sm:h-12 sm:w-12 sm:rounded-2xl">
               <span class="js-icon" data-icon="gift" data-class="h-6 w-6"></span>
             </span>
             <span>
               <span class="block text-[11px] font-extrabold uppercase tracking-wider text-pepper js-campaign-title"></span>
-              <span class="block text-sm font-extrabold leading-snug js-campaign-text"></span>
+              <span class="block text-xs font-extrabold leading-snug js-campaign-text sm:text-sm"></span>
             </span>
           </button>
           <div class="absolute -right-2 top-6 hidden items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-extrabold text-leaf shadow-warm ring-1 ring-cocoa/5 sm:inline-flex">
@@ -151,28 +151,28 @@
 
     <!-- Güven şeridi -->
     <section class="border-y border-cocoa/5 bg-white/60">
-      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-6 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 py-4 sm:gap-4 sm:px-6 sm:py-6 lg:grid-cols-4 lg:px-8">
         <div class="flex items-center gap-3">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-leaf-50 text-leaf"><span class="js-icon" data-icon="leaf" data-class="h-5 w-5"></span></span>
-          <p class="text-sm font-bold leading-tight">Katkısız, doğal<br /><span class="font-semibold text-cocoa-500">malzemeler</span></p>
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl sm:h-11 sm:w-11 sm:rounded-2xl bg-leaf-50 text-leaf"><span class="js-icon" data-icon="leaf" data-class="h-5 w-5"></span></span>
+          <p class="text-[13px] font-bold leading-tight sm:text-sm">Katkısız, doğal<br /><span class="font-semibold text-cocoa-500">malzemeler</span></p>
         </div>
         <div class="flex items-center gap-3">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-sunset-50 text-sunset-700"><span class="js-icon" data-icon="chef" data-class="h-5 w-5"></span></span>
-          <p class="text-sm font-bold leading-tight">Siparişe özel<br /><span class="font-semibold text-cocoa-500">taze üretim</span></p>
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl sm:h-11 sm:w-11 sm:rounded-2xl bg-sunset-50 text-sunset-700"><span class="js-icon" data-icon="chef" data-class="h-5 w-5"></span></span>
+          <p class="text-[13px] font-bold leading-tight sm:text-sm">Siparişe özel<br /><span class="font-semibold text-cocoa-500">taze üretim</span></p>
         </div>
         <div class="flex items-center gap-3">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-honey-50 text-honey-700"><span class="js-icon" data-icon="package" data-class="h-5 w-5"></span></span>
-          <p class="text-sm font-bold leading-tight">Özenli, hijyenik<br /><span class="font-semibold text-cocoa-500">paketleme</span></p>
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl sm:h-11 sm:w-11 sm:rounded-2xl bg-honey-50 text-honey-700"><span class="js-icon" data-icon="package" data-class="h-5 w-5"></span></span>
+          <p class="text-[13px] font-bold leading-tight sm:text-sm">Özenli, hijyenik<br /><span class="font-semibold text-cocoa-500">paketleme</span></p>
         </div>
         <div class="flex items-center gap-3">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-pepper-50 text-pepper"><span class="js-icon" data-icon="truck" data-class="h-5 w-5"></span></span>
-          <p class="text-sm font-bold leading-tight">Adrese teslim<br /><span class="font-semibold text-cocoa-500">veya gel-al</span></p>
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl sm:h-11 sm:w-11 sm:rounded-2xl bg-pepper-50 text-pepper"><span class="js-icon" data-icon="truck" data-class="h-5 w-5"></span></span>
+          <p class="text-[13px] font-bold leading-tight sm:text-sm">Adrese teslim<br /><span class="font-semibold text-cocoa-500">veya gel-al</span></p>
         </div>
       </div>
     </section>
 
     <!-- POPÜLER -->
-    <section id="populer" class="py-16 lg:py-24">
+    <section id="populer" class="py-8 sm:py-16 lg:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -185,26 +185,26 @@
           </div>
         </div>
       </div>
-      <div id="popular-row" class="no-scrollbar mx-auto mt-8 flex max-w-7xl snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-6 sm:gap-6 sm:px-6 lg:px-8"></div>
+      <div id="popular-row" class="no-scrollbar mx-auto mt-4 flex max-w-7xl snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 pb-4 sm:mt-8 sm:pb-6 sm:gap-6 sm:px-6 lg:px-8"></div>
     </section>
 
     <!-- KAMPANYA BANNERI -->
     <section id="campaign-banner" class="px-4 sm:px-6 lg:px-8" hidden>
-      <div class="relative mx-auto grid max-w-7xl overflow-hidden rounded-4xl bg-cocoa text-cream shadow-warm-lg md:grid-cols-2">
-        <div class="relative z-10 p-8 sm:p-12">
+      <div class="relative mx-auto grid max-w-7xl overflow-hidden rounded-3xl bg-cocoa text-cream shadow-warm-lg sm:rounded-4xl md:grid-cols-2">
+        <div class="relative z-10 p-5 sm:p-12">
           <span class="badge-honey"><span class="js-icon" data-icon="gift" data-class="h-3.5 w-3.5"></span> <span class="js-campaign-title"></span></span>
-          <h2 class="mt-5 text-3xl font-semibold leading-tight text-cream sm:text-5xl">San Sebastian Cheesecake</h2>
-          <p class="mt-3 max-w-md text-cream-300/90">Dışı karamelize, içi akışkan Bask usulü cheesecake – 20 cm, 8–10 kişilik. Kampanya siparişte 1 adet için geçerlidir.</p>
-          <div class="mt-6 flex items-end gap-4">
-            <span class="font-display text-5xl font-semibold text-honey sm:text-6xl" id="campaign-price"></span>
+          <h2 class="mt-3 text-2xl font-semibold leading-tight text-cream sm:mt-5 sm:text-5xl">San Sebastian Cheesecake</h2>
+          <p class="mt-2 max-w-md text-sm text-cream-300/90 sm:mt-3 sm:text-base">Dışı karamelize, içi akışkan Bask usulü cheesecake – 20 cm, 8–10 kişilik. Kampanya siparişte 1 adet için geçerlidir.</p>
+          <div class="mt-3 flex items-end gap-3 sm:mt-6 sm:gap-4">
+            <span class="font-display text-4xl font-semibold text-honey sm:text-6xl" id="campaign-price"></span>
             <span class="pb-2 text-lg font-bold text-cream-300/70 line-through" id="campaign-old-price"></span>
           </div>
-          <button type="button" data-open="san-sebastian" class="btn-primary mt-8 px-7 py-4 text-base">
+          <button type="button" data-open="san-sebastian" class="btn-primary btn-lg mt-4 sm:mt-8">
             <span class="js-icon" data-icon="bag" data-class="h-5 w-5"></span>
             Hemen Sepete Ekle
           </button>
         </div>
-        <div class="relative min-h-[260px]">
+        <div class="relative min-h-[150px] sm:min-h-[260px]">
           <img src="assets/img/san-sebastian-1280.webp" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async" />
           <div class="absolute inset-0 bg-gradient-to-r from-cocoa via-cocoa/40 to-transparent md:via-cocoa/10" aria-hidden="true"></div>
         </div>
@@ -212,102 +212,108 @@
     </section>
 
     <!-- MENÜ -->
-    <section id="menu" class="pt-16 lg:pt-24">
+    <section id="menu" class="pt-8 sm:pt-16 lg:pt-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap items-end justify-between gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-3 sm:gap-6">
           <div>
             <p class="section-eyebrow"><span class="js-icon" data-icon="utensils" data-class="h-4 w-4"></span> Tüm lezzetlerimiz</p>
             <h2 class="section-title">Menü</h2>
-            <p class="mt-2 max-w-xl text-cocoa-500">Porsiyon, adet ya da kilo seçerek sipariş verebilirsiniz. Her ürünün içeriği ve yaklaşık gramajı detayında yer alır.</p>
+            <p class="mt-1.5 max-w-xl text-sm text-cocoa-500 sm:mt-2 sm:text-base">Porsiyon, adet ya da kilo seçerek sipariş verebilirsiniz. Her ürünün içeriği ve yaklaşık gramajı detayında yer alır.</p>
           </div>
           <label class="relative w-full sm:w-80">
             <span class="sr-only">Menüde ara</span>
             <span class="js-icon pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-cocoa-400" data-icon="search" data-class="h-5 w-5"></span>
-            <input id="menu-search" type="search" placeholder="Ürün ya da malzeme ara…" class="field rounded-full pl-12" autocomplete="off" />
+            <input id="menu-search" type="search" placeholder="Ürün ya da malzeme ara…" class="field rounded-full py-2.5 pl-11 sm:py-3 sm:pl-12" autocomplete="off" />
           </label>
         </div>
       </div>
 
       <!-- Kategori filtreleri -->
-      <div id="filter-bar" class="sticky top-[72px] z-30 mt-6 border-b border-cocoa/5 bg-cream/90 backdrop-blur-md">
+      <div id="filter-bar" class="sticky top-14 z-30 mt-4 sm:top-[72px] sm:mt-6 border-b border-cocoa/5 bg-cream/90 backdrop-blur-md">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="no-scrollbar flex gap-2 overflow-x-auto py-3" id="category-chips" role="toolbar" aria-label="Kategoriler"></div>
-          <div class="no-scrollbar -mt-1 flex items-center gap-2 overflow-x-auto pb-3" id="diet-chips" role="toolbar" aria-label="Beslenme filtreleri"></div>
+          <div class="no-scrollbar flex gap-1.5 overflow-x-auto py-2 sm:gap-2 sm:py-3" id="category-chips" role="toolbar" aria-label="Kategoriler"></div>
+          <div class="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-2 sm:-mt-1 sm:gap-2 sm:pb-3" id="diet-chips" role="toolbar" aria-label="Beslenme filtreleri"></div>
         </div>
       </div>
 
-      <div id="menu-results" class="mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-6 lg:px-8" aria-live="polite"></div>
+      <div id="menu-results" class="mx-auto max-w-7xl px-3 pb-6 pt-5 sm:pb-8 sm:pt-8 sm:px-6 lg:px-8" aria-live="polite"></div>
       <p class="mx-auto max-w-7xl px-4 text-xs text-cocoa-400 sm:px-6 lg:px-8"><span class="js-price-note"></span> Ürünler el yapımı olduğundan gramajlarda ±%10 farklılık olabilir. Görseller temsilidir.</p>
     </section>
 
     <!-- ORGANİZASYON -->
-    <section id="organizasyon" class="py-16 lg:py-24">
-      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <section id="organizasyon" class="py-10 sm:py-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div class="relative order-2 lg:order-1">
           <div class="overflow-hidden rounded-4xl shadow-warm-lg ring-4 ring-white">
-            <img src="assets/img/organizasyon-1280.webp" alt="Balonlarla süslenmiş ikram masası; tatlılar, poğaçalar ve pastalar" class="aspect-[4/5] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]" loading="lazy" decoding="async" />
+            <img src="assets/img/organizasyon-1280.webp" alt="Balonlarla süslenmiş ikram masası; tatlılar, poğaçalar ve pastalar" class="aspect-[4/3] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]" loading="lazy" decoding="async" />
           </div>
-          <button type="button" data-open="kokteyl-standi" class="absolute -bottom-8 -right-2 w-40 overflow-hidden rounded-3xl shadow-warm-lg ring-4 ring-white transition hover:-translate-y-1 sm:-right-6 sm:w-52" aria-label="Kokteyl Sandviç Standı">
+          <button type="button" data-open="kokteyl-standi" class="absolute -bottom-6 -right-1 w-28 overflow-hidden rounded-2xl sm:-bottom-8 sm:w-52 sm:rounded-3xl shadow-warm-lg ring-4 ring-white transition hover:-translate-y-1 sm:-right-6 sm:w-52" aria-label="Kokteyl Sandviç Standı">
             <img src="assets/img/kokteyl-standi-640.webp" alt="İki katlı ahşap stantta mini burger ve mini kruvasan sandviçler" class="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" />
           </button>
         </div>
         <div class="order-1 lg:order-2">
           <p class="section-eyebrow"><span class="js-icon" data-icon="party" data-class="h-4 w-4"></span> İkram & Organizasyon</p>
           <h2 class="section-title">Davetleriniz için <span class="text-pepper">ikram masası</span> hazırlıyoruz</h2>
-          <p class="mt-4 text-lg leading-relaxed text-cocoa-500">Doğum günü, kabul günü, nişan, mevlit ya da ofis kutlaması… Kişi sayınızı ve tarihinizi yazın; tuzlu-tatlı dengeli, size özel bir menü ve fiyat teklifi hazırlayalım.</p>
-          <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+          <p class="mt-3 text-sm leading-relaxed text-cocoa-500 sm:mt-4 sm:text-lg">Doğum günü, kabul günü, nişan, mevlit ya da ofis kutlaması… Kişi sayınızı ve tarihinizi yazın; tuzlu-tatlı dengeli, size özel bir menü ve fiyat teklifi hazırlayalım.</p>
+          <ul class="mt-4 grid grid-cols-2 gap-2 sm:mt-6 sm:gap-3">
             <li class="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-warm-sm ring-1 ring-cocoa/5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sunset-50 text-sunset-700"><span class="js-icon" data-icon="cake" data-class="h-5 w-5"></span></span><span class="font-bold">Doğum günü & baby shower</span></li>
             <li class="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-warm-sm ring-1 ring-cocoa/5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-honey-50 text-honey-700"><span class="js-icon" data-icon="heart" data-class="h-5 w-5"></span></span><span class="font-bold">Kabul ve altın günleri</span></li>
             <li class="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-warm-sm ring-1 ring-cocoa/5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-pepper-50 text-pepper"><span class="js-icon" data-icon="sparkles" data-class="h-5 w-5"></span></span><span class="font-bold">Nişan, kına, mevlit</span></li>
             <li class="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-warm-sm ring-1 ring-cocoa/5"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-leaf-50 text-leaf"><span class="js-icon" data-icon="users" data-class="h-5 w-5"></span></span><span class="font-bold">Ofis & toplantı ikramları</span></li>
           </ul>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a data-wa="event" target="_blank" rel="noopener" class="btn-primary px-7 py-4 text-base">
+          <div class="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
+            <a data-wa="event" target="_blank" rel="noopener" class="btn-primary btn-lg">
               <span class="js-icon" data-icon="whatsapp" data-class="h-5 w-5"></span>
               Organizasyon Teklifi Al
             </a>
-            <button type="button" data-open="kokteyl-standi" class="btn-secondary px-7 py-4 text-base">Kokteyl Standını İncele</button>
+            <button type="button" data-open="kokteyl-standi" class="btn-secondary btn-lg">Kokteyl Standını İncele</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- NASIL SİPARİŞ VERİLİR -->
-    <section id="nasil" class="bg-white/60 py-16 lg:py-24">
+    <section id="nasil" class="bg-white/60 py-10 sm:py-16 lg:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <p class="section-eyebrow justify-center"><span class="js-icon" data-icon="check" data-class="h-4 w-4"></span> 3 kolay adım</p>
           <h2 class="section-title">Nasıl sipariş verilir?</h2>
-          <p class="mt-3 text-cocoa-500">Üyelik yok, uygulama yok. Seçiminizi yapın, siparişiniz WhatsApp'ta hazır mesaj olarak açılsın.</p>
+          <p class="mt-2 text-sm text-cocoa-500 sm:mt-3 sm:text-base">Üyelik yok, uygulama yok. Seçiminizi yapın, siparişiniz WhatsApp'ta hazır mesaj olarak açılsın.</p>
         </div>
-        <ol class="mt-12 grid gap-6 md:grid-cols-3">
-          <li class="relative rounded-4xl bg-cream p-8 shadow-warm ring-1 ring-cocoa/5">
-            <span class="grid h-14 w-14 place-items-center rounded-2xl bg-sunset font-display text-2xl font-semibold text-white shadow-warm">1</span>
-            <h3 class="mt-6 text-xl font-semibold">Lezzetini seç</h3>
-            <p class="mt-2 text-cocoa-500">Ürünü açın; 3 kişilik, 5 kişilik, adet ya da kilo seçeneklerinden birini ve çeşidini belirleyin.</p>
+        <ol class="mt-6 grid gap-3 sm:mt-12 sm:gap-6 md:grid-cols-3">
+          <li class="step-card">
+            <span class="step-num bg-sunset font-display font-semibold text-white shadow-warm">1</span>
+            <div>
+              <h3 class="text-base font-semibold sm:mt-6 sm:text-xl">Lezzetini seç</h3>
+              <p class="mt-1 text-sm text-cocoa-500 sm:mt-2 sm:text-base">Ürünü açın; 3 kişilik, 5 kişilik, adet ya da kilo seçeneklerinden birini ve çeşidini belirleyin.</p>
+            </div>
           </li>
-          <li class="relative rounded-4xl bg-cream p-8 shadow-warm ring-1 ring-cocoa/5">
-            <span class="grid h-14 w-14 place-items-center rounded-2xl bg-pepper font-display text-2xl font-semibold text-white shadow-warm">2</span>
-            <h3 class="mt-6 text-xl font-semibold">Sepetini onayla</h3>
-            <p class="mt-2 text-cocoa-500">Teslimat tarihi, saat aralığı ve adres bilgilerinizi girin; sipariş özetiniz otomatik hazırlansın.</p>
+          <li class="step-card">
+            <span class="step-num bg-pepper font-display font-semibold text-white shadow-warm">2</span>
+            <div>
+              <h3 class="text-base font-semibold sm:mt-6 sm:text-xl">Sepetini onayla</h3>
+              <p class="mt-1 text-sm text-cocoa-500 sm:mt-2 sm:text-base">Teslimat tarihi, saat aralığı ve adres bilgilerinizi girin; sipariş özetiniz otomatik hazırlansın.</p>
+            </div>
           </li>
-          <li class="relative rounded-4xl bg-cream p-8 shadow-warm ring-1 ring-cocoa/5">
-            <span class="grid h-14 w-14 place-items-center rounded-2xl bg-leaf font-display text-2xl font-semibold text-white shadow-warm">3</span>
-            <h3 class="mt-6 text-xl font-semibold">WhatsApp'tan gönder</h3>
-            <p class="mt-2 text-cocoa-500">WhatsApp mesajınız yazılı halde açılır; sadece <strong class="text-cocoa">Gönder</strong>'e basın. Onay mesajımızla siparişiniz kesinleşir.</p>
+          <li class="step-card">
+            <span class="step-num bg-leaf font-display font-semibold text-white shadow-warm">3</span>
+            <div>
+              <h3 class="text-base font-semibold sm:mt-6 sm:text-xl">WhatsApp'tan gönder</h3>
+              <p class="mt-1 text-sm text-cocoa-500 sm:mt-2 sm:text-base">WhatsApp mesajınız yazılı halde açılır; sadece <strong class="text-cocoa">Gönder</strong>'e basın. Onay mesajımızla siparişiniz kesinleşir.</p>
+            </div>
           </li>
         </ol>
       </div>
     </section>
 
     <!-- SSS -->
-    <section id="sss" class="py-16 lg:py-24">
-      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:px-8">
+    <section id="sss" class="py-10 sm:py-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-5 px-4 sm:gap-10 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:px-8">
         <div>
           <p class="section-eyebrow"><span class="js-icon" data-icon="info" data-class="h-4 w-4"></span> Merak edilenler</p>
           <h2 class="section-title">Sıkça sorulan sorular</h2>
-          <p class="mt-3 text-cocoa-500">Aklınıza takılan başka bir şey varsa bize WhatsApp'tan yazmanız yeterli.</p>
-          <a data-wa="info" target="_blank" rel="noopener" class="btn-secondary mt-6">
+          <p class="mt-2 text-sm text-cocoa-500 sm:mt-3 sm:text-base">Aklınıza takılan başka bir şey varsa bize WhatsApp'tan yazmanız yeterli.</p>
+          <a data-wa="info" target="_blank" rel="noopener" class="btn-secondary mt-4 sm:mt-6">
             <span class="js-icon" data-icon="whatsapp" data-class="h-5 w-5 text-leaf"></span>
             Soru Sor
           </a>
@@ -319,7 +325,7 @@
 
   <!-- FOOTER -->
   <footer class="bg-cocoa text-cream-300">
-    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-7 px-4 py-10 sm:gap-10 sm:px-6 sm:py-14 md:grid-cols-3 lg:px-8">
       <div>
         <div class="flex items-center gap-3">
           <img src="favicon.svg" alt="" class="h-11 w-11" width="44" height="44" />
@@ -346,9 +352,9 @@
 
   <!-- Mobil alt sepet çubuğu -->
   <div id="cart-bar" class="fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 lg:hidden" hidden>
-    <button type="button" data-open-cart class="flex w-full items-center justify-between gap-3 rounded-full bg-pepper py-2 pl-2 pr-5 text-white shadow-cta">
+    <button type="button" data-open-cart class="flex w-full items-center justify-between gap-3 rounded-full bg-pepper py-1.5 pl-1.5 pr-4 text-sm text-white shadow-cta">
       <span class="flex items-center gap-3">
-        <span id="cart-bar-count" class="grid h-10 min-w-10 place-items-center rounded-full bg-honey px-2 text-sm font-black text-cocoa">0</span>
+        <span id="cart-bar-count" class="grid h-8 min-w-8 place-items-center rounded-full bg-honey px-2 text-sm font-black text-cocoa">0</span>
         <span class="font-extrabold">Sepeti Gör</span>
       </span>
       <span id="cart-bar-total" class="font-extrabold tabular-nums"></span>
@@ -359,7 +365,7 @@
   <div id="product-root" class="modal-root fixed inset-0 z-50" hidden>
     <div class="overlay absolute inset-0 bg-cocoa/55 backdrop-blur-sm" data-close-product></div>
     <div class="pointer-events-none absolute inset-0 flex items-end justify-center sm:items-center sm:p-6">
-      <div id="product-panel" class="sheet-panel pointer-events-auto relative flex max-h-[94vh] w-full flex-col overflow-hidden rounded-t-4xl bg-cream shadow-warm-lg sm:h-[min(680px,90vh)] sm:max-w-5xl sm:rounded-4xl" role="dialog" aria-modal="true" aria-labelledby="product-title"></div>
+      <div id="product-panel" class="sheet-panel pointer-events-auto relative flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl sm:rounded-t-4xl bg-cream shadow-warm-lg sm:h-[min(680px,90vh)] sm:max-w-5xl sm:rounded-4xl" role="dialog" aria-modal="true" aria-labelledby="product-title"></div>
     </div>
   </div>
 
@@ -367,21 +373,21 @@
   <div id="cart-root" class="modal-root fixed inset-0 z-50" hidden>
     <div class="overlay absolute inset-0 bg-cocoa/55 backdrop-blur-sm" data-close-cart></div>
     <aside id="cart-panel" class="drawer-panel absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-cream shadow-warm-lg" role="dialog" aria-modal="true" aria-labelledby="cart-title">
-      <header class="flex items-center justify-between gap-3 px-5 pb-3 pt-5">
+      <header class="flex items-center justify-between gap-3 px-4 pb-2 pt-4 sm:px-5 sm:pb-3 sm:pt-5">
         <div>
-          <h2 id="cart-title" class="text-2xl font-semibold">Sepetim</h2>
+          <h2 id="cart-title" class="text-xl font-semibold sm:text-2xl">Sepetim</h2>
           <p id="cart-subtitle" class="text-xs font-bold text-cocoa-500"></p>
         </div>
-        <button type="button" data-close-cart class="grid h-11 w-11 place-items-center rounded-full bg-white shadow-warm-sm ring-1 ring-cocoa/5 transition hover:text-pepper" aria-label="Sepeti kapat"><span class="js-icon" data-icon="x" data-class="h-5 w-5"></span></button>
+        <button type="button" data-close-cart class="grid h-9 w-9 sm:h-11 sm:w-11 place-items-center rounded-full bg-white shadow-warm-sm ring-1 ring-cocoa/5 transition hover:text-pepper" aria-label="Sepeti kapat"><span class="js-icon" data-icon="x" data-class="h-5 w-5"></span></button>
       </header>
-      <div id="cart-steps" class="grid grid-cols-3 gap-2 px-5 pb-4"></div>
-      <div id="cart-body" class="min-h-0 flex-1 overflow-y-auto px-5 pb-6"></div>
-      <footer id="cart-footer" class="border-t border-cocoa/10 bg-white/80 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur"></footer>
+      <div id="cart-steps" class="grid grid-cols-3 gap-2 px-4 pb-3 sm:px-5 sm:pb-4"></div>
+      <div id="cart-body" class="min-h-0 flex-1 overflow-y-auto px-4 pb-5 sm:px-5 sm:pb-6"></div>
+      <footer id="cart-footer" class="border-t border-cocoa/10 bg-white/80 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 sm:px-5 sm:pt-4 backdrop-blur"></footer>
     </aside>
   </div>
 
   <!-- Bildirim -->
-  <div id="toast" class="pointer-events-none fixed inset-x-0 bottom-24 z-[60] flex justify-center px-4 lg:bottom-8" aria-live="polite"></div>
+  <div id="toast" class="pointer-events-none fixed inset-x-0 bottom-20 z-[60] flex justify-center px-4 lg:bottom-8" aria-live="polite"></div>
 
   <noscript>
     <div style="position:fixed;inset:auto 0 0 0;background:#F9C74F;color:#2B1E1A;padding:12px;text-align:center;font-weight:700;z-index:99">Sipariş verebilmek için lütfen tarayıcınızda JavaScript'i etkinleştirin.</div>
