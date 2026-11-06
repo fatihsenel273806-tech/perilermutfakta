@@ -11,10 +11,10 @@ window.SITE_CONFIG = {
   // >>> SİPARİŞLERİN GELECEĞİ WHATSAPP NUMARASI <<<
   // Başında + veya 0 olmadan, ülke koduyla yazın. Örnek: 905321234567
   // Numara girilmezse WhatsApp açılır ve kişi seçmeniz istenir.
-  whatsappNumber: '',
+  whatsappNumber: '905533046412',
 
   // Sitede görünecek telefon (boş bırakılırsa gösterilmez)
-  displayPhone: '',
+  displayPhone: '0553 304 64 12',
 
   // Instagram kullanıcı adı (@ olmadan). Boş bırakılırsa gösterilmez.
   instagram: '',
