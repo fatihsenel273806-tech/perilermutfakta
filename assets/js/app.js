@@ -335,6 +335,7 @@
       cart = cart.filter((l) => PRODUCTS.some((p) => p.id === l.productId));
       saveCart();
       $('#stat-count').textContent = PRODUCTS.length;
+      renderSetMenus();
       renderPopular();
       renderChips();
       renderMenu();
@@ -582,6 +583,57 @@
     if (campaignOn(p)) out.push(`<span class="badge-pepper">${icon('gift', 'h-3 w-3')}Kampanya</span>`);
     if (p.popular) out.push(`<span class="badge-honey">${icon('flame', 'h-3 w-3')}Çok sevilen</span>`);
     return out.join('');
+  }
+
+  /* ------------------------------------------------------------ */
+  /* Gün menüleri (hazır ikram paketleri)                           */
+  /* ------------------------------------------------------------ */
+  const MENU_THEMES = {
+    sunset: { band: 'bg-sunset', soft: 'bg-sunset-50', text: 'text-sunset-700', ring: 'ring-sunset/30', dot: 'text-sunset' },
+    leaf: { band: 'bg-leaf', soft: 'bg-leaf-50', text: 'text-leaf-700', ring: 'ring-leaf/30', dot: 'text-leaf' },
+    pepper: { band: 'bg-pepper', soft: 'bg-pepper-50', text: 'text-pepper-700', ring: 'ring-pepper/30', dot: 'text-pepper' },
+  };
+  function renderSetMenus() {
+    const box = $('#set-menus');
+    if (!box) return;
+    const menus = PRODUCTS.filter((p) => p.category === 'gun-menuleri');
+    box.closest('section').hidden = !menus.length;
+    box.innerHTML = menus
+      .map((p) => {
+        const th = MENU_THEMES[p.menuTheme] || MENU_THEMES.sunset;
+        const first = p.options[0];
+        const rest = p.options.slice(1);
+        return `
+        <article class="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-warm ring-1 ring-cocoa/5 transition hover:-translate-y-1 hover:shadow-warm-lg sm:rounded-4xl">
+          <button type="button" data-open="${p.id}" class="relative block aspect-[16/9] overflow-hidden bg-cream-200 sm:aspect-[4/3]" aria-label="${esc(p.name)} menüsünü gör">
+            ${imgTag(p.image, p.name, 'h-full w-full object-cover transition duration-700 group-hover:scale-105', '(min-width:768px) 32vw, 100vw')}
+            <span class="absolute left-3 top-3 grid h-11 w-11 place-items-center rounded-full ${th.band} font-display text-xl font-semibold text-white shadow-warm ring-4 ring-white sm:h-14 sm:w-14 sm:text-2xl">${p.menuNo || ''}</span>
+          </button>
+          <div class="flex flex-1 flex-col p-4 sm:p-6">
+            <p class="text-[11px] font-extrabold uppercase tracking-[0.18em] ${th.text}">${p.menuNo ? `${p.menuNo}. Menü` : 'Gün Menüsü'}</p>
+            <h3 class="mt-1 text-2xl font-semibold leading-tight sm:text-[1.75rem]">${esc(p.name)}</h3>
+            ${p.menuTagline ? `<p class="mt-1 text-sm italic text-cocoa-500">${esc(p.menuTagline)}</p>` : ''}
+            <ul class="mt-3 space-y-1.5 sm:mt-4 sm:space-y-2">
+              ${(p.items || [])
+                .map((it) => `<li class="flex items-center gap-2 text-[15px] font-bold text-cocoa-700">${icon('sparkles', `h-4 w-4 shrink-0 ${th.dot}`)}${esc(it)}</li>`)
+                .join('')}
+            </ul>
+            <div class="mt-auto pt-4 sm:pt-6">
+              <div class="flex items-end justify-between gap-3 rounded-2xl ${th.soft} px-4 py-3 ring-1 ${th.ring}">
+                <div>
+                  <p class="text-xs font-extrabold ${th.text}">${esc(first.label)}</p>
+                  <p class="font-display text-2xl font-semibold leading-none sm:text-3xl">${money(first.price)}</p>
+                </div>
+                <div class="text-right text-[11px] font-bold leading-snug text-cocoa-500 sm:text-xs">
+                  ${rest.map((o) => `${esc(o.label)} <span class="whitespace-nowrap text-cocoa">${money(o.price)}</span>`).join('<br />')}
+                </div>
+              </div>
+              <button type="button" data-open="${p.id}" class="btn-primary mt-3 w-full">${icon('plus', 'h-4 w-4')}Menüyü Seç</button>
+            </div>
+          </div>
+        </article>`;
+      })
+      .join('');
   }
 
   /* ------------------------------------------------------------ */
@@ -1640,6 +1692,7 @@
     $('#stat-count').textContent = PRODUCTS.length;
     $('#year').textContent = new Date().getFullYear();
     renderCampaign();
+    renderSetMenus();
     renderPopular();
     renderChips();
     renderMenu();

@@ -15,6 +15,7 @@
    ===================================================================== */
 window.MENU = {
   categories: [
+    { id: 'gun-menuleri', name: 'Gün Menüleri', icon: 'sparkles', blurb: 'Hazır ikram menüleri · 10 kişiden başlar' },
     { id: 'ev-yemekleri', name: 'Ev Yemekleri', icon: 'leaf', blurb: 'Zeytinyağlılar, dolmalar ve köfteler' },
     { id: 'hamur-isleri', name: 'Hamur İşleri', icon: 'croissant', blurb: 'Her sabah taze fırından' },
     { id: 'tatlilar', name: 'Sütlü & Kup Tatlılar', icon: 'cake', blurb: 'Kaşık kaşık mutluluk' },
@@ -24,6 +25,86 @@ window.MENU = {
   ],
 
   products: [
+    /* ------------------------------------------------------------------ */
+    /* GÜN MENÜLERİ – hazır ikram paketleri (index.html#gun-menuleri)       */
+    /* items: menüde yer alan lezzetler (sitede ve Instagram görselinde)   */
+    /* ------------------------------------------------------------------ */
+    {
+      id: 'menu-peri-cay-saati',
+      name: 'Peri Çay Saati',
+      menuNo: 1,
+      menuTheme: 'sunset',
+      menuTagline: 'Gün ve kabul sofralarının klasiği',
+      items: ['Poğaça', 'Kurabiye çeşitleri', 'Yaprak sarma', 'Cupcake', 'Yoğurtlu köz salatası'],
+      aliases: ['gün menüsü', 'altın günü', 'kabul günü', 'paket menü', 'menü 1', 'çay saati'],
+      category: 'gun-menuleri',
+      image: 'menu-peri-cay-saati',
+      gallery: ['menu-peri-cay-saati', 'pogaca', 'yaprak-sarmasi', 'tuzlu-kurabiye'],
+      tags: ['vejetaryen'],
+      short: 'Poğaça, kurabiye çeşitleri, yaprak sarma, cupcake ve yoğurtlu köz salatası.',
+      description:
+        'Gün ve kabul sofraları için tuzlu-tatlı dengeli hazır menü: sabah fırından poğaçalar, çay saatine kurabiye çeşitleri, zeytinyağlı yaprak sarma, kremalı cupcake ve közlenmiş patlıcan-biberle yoğurtlu köz salatası. Tüm lezzetler servis tabaklarına hazır, ayrı ayrı paketlenir.',
+      ingredients: ['Poğaça (peynirli & zeytinli)', 'Tuzlu ve tatlı kurabiye çeşitleri', 'Zeytinyağlı yaprak sarma', 'Cupcake (vanilyalı & kakaolu)', 'Yoğurtlu köz salatası (közlenmiş patlıcan, biber, süzme yoğurt, sarımsak)'],
+      allergens: ['Gluten', 'Süt', 'Yumurta', 'Çam fıstığı', 'Susam'],
+      serving: 'Kişi başı her lezzetten ikram porsiyonu',
+      storage: 'Aynı gün ya da ertesi gün tüketilmelidir',
+      options: [
+        { id: 'k10', label: '10 Kişilik', detail: '5 çeşit · ikram masası', price: 2600 },
+        { id: 'k20', label: '20 Kişilik', detail: '5 çeşit · ikram masası', price: 5000 },
+        { id: 'k30', label: '30 Kişilik', detail: '5 çeşit · ikram masası', price: 7300 },
+      ],
+    },
+    {
+      id: 'menu-bereket-sofrasi',
+      name: 'Bereket Sofrası',
+      menuNo: 2,
+      menuTheme: 'leaf',
+      menuTagline: 'Dolmasından salatasına doyurucu bir masa',
+      items: ['Peynirli börek', 'Kuru dolma', 'Kurabiye çeşitleri', 'Cupcake', 'Meksika fasulyesi salatası'],
+      aliases: ['gün menüsü', 'paket menü', 'menü 2', 'bereket'],
+      category: 'gun-menuleri',
+      image: 'menu-bereket-sofrasi',
+      gallery: ['menu-bereket-sofrasi', 'kuru-dolma', 'rulo-borek', 'elmali-kurabiye'],
+      tags: [],
+      short: 'Peynirli börek, kuru dolma, kurabiye çeşitleri, cupcake ve Meksika fasulyesi salatası.',
+      description:
+        'Kalabalık misafirler için doyurucu hazır menü: elde açılan peynirli börek, Antep usulü kuru dolma, kurabiye çeşitleri, kremalı cupcake ve renk renk Meksika fasulyesi salatası. Tüm lezzetler servis tabaklarına hazır, ayrı ayrı paketlenir.',
+      ingredients: ['Peynirli rulo börek', 'Kuru dolma (patlıcan & biber)', 'Tuzlu ve tatlı kurabiye çeşitleri', 'Cupcake (vanilyalı & kakaolu)', 'Meksika fasulyesi salatası (kırmızı fasulye, mısır, renkli biber, nar ekşili sos)'],
+      allergens: ['Gluten', 'Süt', 'Yumurta', 'Susam'],
+      serving: 'Kişi başı her lezzetten ikram porsiyonu',
+      storage: 'Aynı gün ya da ertesi gün tüketilmelidir',
+      options: [
+        { id: 'k10', label: '10 Kişilik', detail: '5 çeşit · ikram masası', price: 2900 },
+        { id: 'k20', label: '20 Kişilik', detail: '5 çeşit · ikram masası', price: 5600 },
+        { id: 'k30', label: '30 Kişilik', detail: '5 çeşit · ikram masası', price: 8200 },
+      ],
+    },
+    {
+      id: 'menu-erciyes-ziyafeti',
+      name: 'Erciyes Ziyafeti',
+      menuNo: 3,
+      menuTheme: 'pepper',
+      menuTagline: 'Kayseri pastırmasıyla en özel günlere',
+      items: ['İçli köfte', 'Pastırmalı börek', 'Elmalı kurabiye', 'Poğaça', 'San Sebastian cheesecake'],
+      aliases: ['gün menüsü', 'paket menü', 'menü 3', 'kayseri', 'pastırma', 'san sebastian'],
+      category: 'gun-menuleri',
+      image: 'menu-erciyes-ziyafeti',
+      gallery: ['menu-erciyes-ziyafeti', 'icli-kofte', 'rulo-borek', 'san-sebastian'],
+      tags: [],
+      short: 'İçli köfte, pastırmalı börek, elmalı kurabiye, poğaça ve San Sebastian cheesecake.',
+      description:
+        'Nişan, kına, doğum günü ve en özel davetler için: cevizli içli köfte, Kayseri pastırmalı rulo börek, tarçınlı elmalı kurabiye, poğaça ve dilimlenmiş San Sebastian cheesecake. Tüm lezzetler servis tabaklarına hazır, ayrı ayrı paketlenir.',
+      ingredients: ['İçli köfte (kızartılmış)', 'Pastırmalı & kaşarlı rulo börek', 'Elmalı kurabiye', 'Poğaça (peynirli & zeytinli)', 'San Sebastian cheesecake (dilimli)'],
+      allergens: ['Gluten', 'Süt', 'Yumurta', 'Ceviz', 'Susam'],
+      serving: 'Kişi başı her lezzetten ikram porsiyonu',
+      storage: 'Aynı gün ya da ertesi gün tüketilmelidir',
+      options: [
+        { id: 'k10', label: '10 Kişilik', detail: '5 çeşit · ikram masası', price: 3600 },
+        { id: 'k20', label: '20 Kişilik', detail: '5 çeşit · ikram masası', price: 6900 },
+        { id: 'k30', label: '30 Kişilik', detail: '5 çeşit · ikram masası', price: 10200 },
+      ],
+    },
+
     /* ------------------------------------------------------------------ */
     /* EV YEMEKLERİ                                                        */
     /* ------------------------------------------------------------------ */
@@ -293,28 +374,30 @@ window.MENU = {
     },
 
     {
-      id: 'su-boregi',
-      name: 'Su Böreği',
-      aliases: ['borek', 'börek', 'su boregi', 'peynirli börek', 'kıymalı börek'],
+      id: 'rulo-borek',
+      name: 'Pastırmalı & Peynirli Börek',
+      aliases: ['borek', 'börek', 'rulo börek', 'pastırmalı börek', 'pastirmali', 'peynirli börek', 'kayseri pastırması'],
       category: 'hamur-isleri',
-      image: 'su-boregi',
-      photoCredit: { author: 'Samizambak', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Su_b%C3%B6re%C4%9Fi_2025.jpg' },
-      tags: ['vejetaryen'],
-      short: 'Yufkası elde açılıp haşlanan, kat kat tereyağlı su böreği; peynirli veya kıymalı.',
+      image: 'rulo-borek',
+      popular: true,
+      tags: [],
+      short: 'Elde açılan hamur, Kayseri pastırması ya da peynirle sarılan çıtır rulo börek.',
       description:
-        'Yumurtalı hamur ince ince açılır, her kat tek tek haşlanıp soğuk suya alınır ve bol tereyağıyla tepsiye serilir. Lor-beyaz peynir ve maydanozlu ya da soğanlı dana kıymalı iç harçla fırında kızartılır. Tepsi kare dilimlenmiş olarak teslim edilir.',
-      ingredients: ['Un', 'Yumurta', 'Tuz', 'Tereyağı', 'Süt', 'Beyaz peynir', 'Lor peyniri', 'Maydanoz', 'İç harç (seçime göre)'],
-      allergens: ['Gluten', 'Yumurta', 'Süt'],
-      serving: '1 dilim ≈ 150–170 g',
-      storage: 'Buzdolabında 3 gün · tüketmeden önce ısıtın',
+        'Hamuru elde açılır, Kayseri pastırması ve kaşarla ya da beyaz peynir ve maydanozla doldurulup rulo şeklinde sarılır. Üzeri yumurta sarısı ve galeta ile fırında altın rengini alana kadar pişirilir. Karışık kutu siparişinde yarısı pastırmalı, yarısı peynirli hazırlanır.',
+      ingredients: ['Un', 'Süt', 'Yumurta', 'Tereyağı', 'Ayçiçek yağı', 'Maya', 'Tuz', 'Kayseri pastırması', 'Kaşar peyniri', 'Beyaz peynir', 'Maydanoz', 'Galeta unu'],
+      allergens: ['Gluten', 'Süt', 'Yumurta'],
+      serving: '1 adet ≈ 120–130 g · 1 porsiyon 1–2 adet',
+      storage: 'Buzdolabında 2 gün · tüketmeden önce ısıtın',
       variantLabel: 'İç harç',
       variants: [
-        { id: 'peynirli', name: 'Peynirli & maydanozlu', prices: [750, 1400] },
-        { id: 'kiymali', name: 'Kıymalı (vejetaryen değildir)', prices: [900, 1700] },
+        { id: 'peynirli', name: 'Peynirli & maydanozlu', prices: [420, 800, 1550] },
+        { id: 'pastirmali', name: 'Pastırmalı & kaşarlı', prices: [560, 1080, 2100] },
+        { id: 'karisik', name: 'Karışık (yarı yarıya)', prices: [490, 940, 1820] },
       ],
       options: [
-        { id: 'yt', label: 'Yarım Tepsi', detail: '8 dilim · ≈ 1,3 kg' },
-        { id: 'tt', label: 'Tam Tepsi', detail: '16 dilim · ≈ 2,6 kg' },
+        { id: 'a6', label: '6 Adet', detail: '≈ 750 g · 3–4 kişilik' },
+        { id: 'a12', label: '12 Adet', detail: '≈ 1,5 kg · 6–8 kişilik' },
+        { id: 'a24', label: '24 Adet', detail: '≈ 3 kg · 12–15 kişilik' },
       ],
     },
     /* ------------------------------------------------------------------ */
@@ -464,32 +547,6 @@ window.MENU = {
         { id: 'k1', label: '1 Güveç', detail: 'Tek kişilik', price: 150 },
         { id: 'k4', label: '4\'lü Kutu', detail: '4 kişilik', price: 560 },
         { id: 'k8', label: '8\'li Kutu', detail: '8 kişilik', price: 1080 },
-      ],
-    },
-    {
-      id: 'ev-baklavasi',
-      name: 'Ev Baklavası',
-      aliases: ['baklava', 'cevizli', 'fıstıklı', 'şerbetli', 'bayram'],
-      category: 'tatlilar',
-      image: 'ev-baklavasi',
-      photoCredit: { author: 'Maksym Kozlenko', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:2018-04-28_Turkish_baklava_in_Australian_turkish_cafe.jpg' },
-      tags: ['vejetaryen'],
-      short: 'Elde açılan 40 kat yufka, bol tereyağı ve iç; şerbeti tam kıvamında ev baklavası.',
-      description:
-        'Nişastayla incecik açılan yufkalar kat kat dizilir, araya bol ceviz ya da Antep fıstığı serpilir. Sade tereyağıyla fırınlanır, ılık şerbetle buluşturulur. Bayramlar, misafirler ve hediyelik kutular için.',
-      ingredients: ['Un', 'Yumurta', 'Süt', 'Nişasta', 'Sade tereyağı', 'Ceviz içi veya Antep fıstığı', 'Toz şeker', 'Su', 'Limon'],
-      allergens: ['Gluten', 'Yumurta', 'Süt', 'Ceviz / Antep fıstığı'],
-      serving: '1 dilim ≈ 40–45 g',
-      storage: 'Oda sıcaklığında, kapalı kapta 1 hafta',
-      variantLabel: 'İç',
-      variants: [
-        { id: 'cevizli', name: 'Cevizli', prices: [650, 1250, 2400] },
-        { id: 'fistikli', name: 'Antep fıstıklı', prices: [950, 1850, 3600] },
-      ],
-      options: [
-        { id: 'g500', label: '500 g', detail: '≈ 12 dilim' },
-        { id: 'kg1', label: '1 kg', detail: '≈ 24 dilim' },
-        { id: 'kg2', label: '2 kg (tepsi)', detail: '≈ 48 dilim · ikramlık' },
       ],
     },
     /* ------------------------------------------------------------------ */

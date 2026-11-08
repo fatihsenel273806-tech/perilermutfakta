@@ -1,4 +1,13 @@
 urun_id,urun,secenek_id,secenek,cesit_id,cesit,fiyat,goster
+menu-peri-cay-saati,Peri Çay Saati,k10,10 Kişilik,,,2600,evet
+menu-peri-cay-saati,Peri Çay Saati,k20,20 Kişilik,,,5000,evet
+menu-peri-cay-saati,Peri Çay Saati,k30,30 Kişilik,,,7300,evet
+menu-bereket-sofrasi,Bereket Sofrası,k10,10 Kişilik,,,2900,evet
+menu-bereket-sofrasi,Bereket Sofrası,k20,20 Kişilik,,,5600,evet
+menu-bereket-sofrasi,Bereket Sofrası,k30,30 Kişilik,,,8200,evet
+menu-erciyes-ziyafeti,Erciyes Ziyafeti,k10,10 Kişilik,,,3600,evet
+menu-erciyes-ziyafeti,Erciyes Ziyafeti,k20,20 Kişilik,,,6900,evet
+menu-erciyes-ziyafeti,Erciyes Ziyafeti,k30,30 Kişilik,,,10200,evet
 yaprak-sarmasi,Yaprak Sarması,p3,3 Kişilik,zeytinyagli,Zeytinyağlı,540,evet
 yaprak-sarmasi,Yaprak Sarması,p3,3 Kişilik,etli,Etli (dana kıymalı),660,evet
 yaprak-sarmasi,Yaprak Sarması,p5,5 Kişilik,zeytinyagli,Zeytinyağlı,850,evet
@@ -47,10 +56,15 @@ kavurmali-pide,Kavurmalı Yumurtalı Pide,a8,8 Adet,,,2080,evet
 milfoy-kulah,Milföy Külah,a10,10 Adet,,,480,evet
 milfoy-kulah,Milföy Külah,a20,20 Adet,,,920,evet
 milfoy-kulah,Milföy Külah,a40,40 Adet,,,1780,evet
-su-boregi,Su Böreği,yt,Yarım Tepsi,peynirli,Peynirli & maydanozlu,750,evet
-su-boregi,Su Böreği,yt,Yarım Tepsi,kiymali,Kıymalı (vejetaryen değildir),900,evet
-su-boregi,Su Böreği,tt,Tam Tepsi,peynirli,Peynirli & maydanozlu,1400,evet
-su-boregi,Su Böreği,tt,Tam Tepsi,kiymali,Kıymalı (vejetaryen değildir),1700,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a6,6 Adet,peynirli,Peynirli & maydanozlu,420,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a6,6 Adet,pastirmali,Pastırmalı & kaşarlı,560,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a6,6 Adet,karisik,Karışık (yarı yarıya),490,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a12,12 Adet,peynirli,Peynirli & maydanozlu,800,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a12,12 Adet,pastirmali,Pastırmalı & kaşarlı,1080,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a12,12 Adet,karisik,Karışık (yarı yarıya),940,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a24,24 Adet,peynirli,Peynirli & maydanozlu,1550,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a24,24 Adet,pastirmali,Pastırmalı & kaşarlı,2100,evet
+rulo-borek,Pastırmalı & Peynirli Börek,a24,24 Adet,karisik,Karışık (yarı yarıya),1820,evet
 trilice,Triliçe,p4,4 Kişilik,,,600,evet
 trilice,Triliçe,p8,8 Kişilik,,,1150,evet
 trilice,Triliçe,p12,12 Kişilik,,,1650,evet
@@ -82,12 +96,6 @@ berliner,Kremalı Berliner,a24,24 Adet,,,1700,evet
 firin-sutlac,Fırın Sütlaç,k1,1 Güveç,,,150,evet
 firin-sutlac,Fırın Sütlaç,k4,4'lü Kutu,,,560,evet
 firin-sutlac,Fırın Sütlaç,k8,8'li Kutu,,,1080,evet
-ev-baklavasi,Ev Baklavası,g500,500 g,cevizli,Cevizli,650,evet
-ev-baklavasi,Ev Baklavası,g500,500 g,fistikli,Antep fıstıklı,950,evet
-ev-baklavasi,Ev Baklavası,kg1,1 kg,cevizli,Cevizli,1250,evet
-ev-baklavasi,Ev Baklavası,kg1,1 kg,fistikli,Antep fıstıklı,1850,evet
-ev-baklavasi,Ev Baklavası,kg2,2 kg (tepsi),cevizli,Cevizli,2400,evet
-ev-baklavasi,Ev Baklavası,kg2,2 kg (tepsi),fistikli,Antep fıstıklı,3600,evet
 san-sebastian,San Sebastian Cheesecake,c16,16 cm,,,950,evet
 san-sebastian,San Sebastian Cheesecake,c20,20 cm,,,1450,evet
 san-sebastian,San Sebastian Cheesecake,c24,24 cm,,,2050,evet

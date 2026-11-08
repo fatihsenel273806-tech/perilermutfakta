@@ -6,7 +6,7 @@ bir sipariş sitesi.
 
 ## Özellikler
 
-- **24 ürün, 6 kategori** (Kayseri merkezli) – fotoğraflar, içindekiler, alerjen ve saklama bilgisi
+- **3 hazır Gün Menüsü + 23 ürün, 7 kategori** (Kayseri merkezli) – fotoğraflar, içindekiler, alerjen ve saklama bilgisi
 - **Porsiyon seçimi** – 3/5/10 kişilik, adet, kilo veya kek çapı (cm); her seçenekte yaklaşık gramaj
 - **Çeşit seçimi** – zeytinyağlı/etli, iç harç, sos, meyve vb. (fiyat farkı otomatik)
 - **Kampanya** – "2.000 ₺ üzeri siparişlerde San Sebastian (20 cm) 1.000 ₺" (indirim sonrası sepet tutarı `campaign.minOrder` ve üzeriyse 1 adet için otomatik uygulanır)
@@ -62,10 +62,31 @@ Lisans gereği yazar adı ve lisans, ürün penceresinde fotoğrafın köşesind
 |---|---|---|---|
 | kayseri-mantisi | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kayseri_mant%C4%B1s%C4%B1.jpg) |
 | mercimek-koftesi | İmmortalance | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lentil_meatballs.jpg) |
-| su-boregi | Samizambak | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Su_b%C3%B6re%C4%9Fi_2025.jpg) |
 | firin-sutlac | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Turkish_rice_pudding_(s%C3%BCtla%C3%A7).jpg) |
-| ev-baklavasi | Maksym Kozlenko | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2018-04-28_Turkish_baklava_in_Australian_turkish_cafe.jpg) |
 | supangle | E4024 | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Supangle_(cake_inside).jpg) |
+
+## Gün Menüleri (hazır ikram paketleri)
+
+Sitede "Gün Menüleri" bölümünde ve menüde ayrı kategori olarak görünür. 10 / 20 / 30 kişilik seçilip sepete eklenir.
+
+| No | Menü | İçerik | 10 / 20 / 30 kişilik |
+| --- | --- | --- | --- |
+| 1 | Peri Çay Saati | Poğaça, kurabiye çeşitleri, yaprak sarma, cupcake, yoğurtlu köz salatası | 2.600 / 5.000 / 7.300 ₺ |
+| 2 | Bereket Sofrası | Peynirli börek, kuru dolma, kurabiye çeşitleri, cupcake, Meksika fasulyesi salatası | 2.900 / 5.600 / 8.200 ₺ |
+| 3 | Erciyes Ziyafeti | İçli köfte, pastırmalı börek, elmalı kurabiye, poğaça, San Sebastian | 3.600 / 6.900 / 10.200 ₺ |
+
+Menü adı, içerik (`items`) ve fiyatlar `assets/js/products.js` dosyasının en üstündeki üç kayıttan değiştirilir.
+
+### Instagram görselleri
+
+`instagram/` klasöründe paylaşıma hazır görseller vardır:
+
+- `gun-menuleri-gonderi.jpg` – 3 menü tek gönderide (1080×1350)
+- `gun-menuleri-hikaye.jpg` – hikâye / story (1080×1920)
+- `menu-1.jpg`, `menu-2.jpg`, `menu-3.jpg` – kaydırmalı (carousel) gönderi için her menü ayrı (1080×1350)
+
+Fiyat ya da içerik değişince görselleri yeniden üretmek için: `node tools/instagram-gorselleri.js`
+(Playwright gerekir). Tasarım `instagram/sablon.html` dosyasındadır.
 
 ## 3) Ek ayarlar (isteğe bağlı) – `assets/js/config.js`
 
@@ -170,6 +191,7 @@ göre belirlenmiştir.
 | Limonlu Cheesecake | 16 cm 900 ₺ · 20 cm 1.350 ₺ · 24 cm 1.900 ₺ | 1 dilim ≈ 130–150 g |
 | Tuzlu Kurabiye | 500 g 380 ₺ · 1 kg 720 ₺ · 2 kg 1.400 ₺ | 1 kg ≈ 45–50 adet |
 | Elmalı Kurabiye | 500 g 420 ₺ · 1 kg 800 ₺ · 2 kg 1.550 ₺ | 1 kg ≈ 30–33 adet |
+| Pastırmalı & Peynirli Börek | 6 adet 420 ₺ · 12 adet 800 ₺ · 24 adet 1.550 ₺ (pastırmalı 560 / 1.080 / 2.100 ₺, karışık 490 / 940 / 1.820 ₺) | 1 adet ≈ 120–130 g |
 | Kokteyl Sandviç Standı | 30 parça 2.100 ₺ · 50 parça 3.400 ₺ · 80 parça 5.300 ₺ | kişi başı 3–4 parça |
 
 ## Dosya yapısı
