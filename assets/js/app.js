@@ -598,6 +598,9 @@
     if (!box) return;
     const menus = PRODUCTS.filter((p) => p.category === 'gun-menuleri');
     box.closest('section').hidden = !menus.length;
+    const from = menus.length ? Math.min(...menus.map((m) => m.options[0].price)) : 0;
+    $$('.js-menu-from').forEach((el) => (el.textContent = money(from)));
+    $$('a[href="#gun-menuleri"]').forEach((a) => (a.hidden = !menus.length));
     box.innerHTML = menus
       .map((p) => {
         const th = MENU_THEMES[p.menuTheme] || MENU_THEMES.sunset;
